@@ -72,11 +72,12 @@ public class Proyecto_Programación_Claudia_11711357 {
         }
 
         Jugador += 1;
-        Contador = 15;
-        for (int i = 6; i < 8; i++) {
+        Contador = 0;
+    
+        for (int i = 7; i >5; i--) {
             for (int j = 0; j < 8; j++) {
                 matriz[i][j] = Jugadores.get(Jugador).getPiezas().get(Contador);
-                Contador -= 1;
+                Contador += 1;
             }
         }
         //System.out.println("JUGADORES:"+Jugadores);
