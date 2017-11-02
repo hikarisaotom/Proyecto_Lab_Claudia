@@ -1,0 +1,13 @@
+
+Realizar el siguiente proyecto integrador, la ponderacion es la siguiente: 
+*Recursion y matrices (25%)
+*Clases (25%)
+*Herencia (25%)
+*Polimorfismo (25%)
+
+Peon =P;
+Alfin=A;
+Caballo=C;
+Rey=R;
+Reina=Q;
+Torre=T;
