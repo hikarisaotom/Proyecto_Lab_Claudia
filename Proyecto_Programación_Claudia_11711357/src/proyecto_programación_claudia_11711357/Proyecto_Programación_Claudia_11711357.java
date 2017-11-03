@@ -4,13 +4,15 @@ import Piezas.*;
 import Jugadores.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Proyecto_Programación_Claudia_11711357 {
 
     public static ArrayList<Jugador> Jugadores = new ArrayList();
     public static Object[][] Tablero;
     public static Scanner SC = new Scanner(System.in);
-
+    public static boolean Ganador = false;
+    public static int Turno=0;
     public static void main(String[] args) {
         System.out.println("Ingrese el Nombre del Jugador 1");
         String Nombre = SC.next();
@@ -26,20 +28,39 @@ public class Proyecto_Programación_Claudia_11711357 {
         System.out.println("Ingrese el Nombre del Jugador 2");
         Nombre = SC.next();
         Jugadores.add(new Jugador(Nombre, 1, ID));
-        // System.out.println(Jugadores);
         Tablero = Llenar_Matriz();
         Tablero = Cargar_Piezas(Tablero);
-        Imprimir_Matriz(Tablero, 7, 0);
+        
+       while(true){
+           if (Ganador) {
+               System.out.println("Felicidades "+Jugadores.get(Turno).getNombre()+" ha ganado!");
+           }
+            System.out.println("");
+           System.out.println("Turno de "+Jugadores.get(Turno).getNombre());
+           System.out.println("");
+           switch (Turno){
+               case 0:
+                    Imprimir_Matriz(Tablero, 7, 0);
+                   System.out.println("");
+                   CambiarPosicion(Turno);
+                   Turno=1;
         System.out.println("");
-        CambiarPosicion();
-        Imprimir_Matriz(Tablero, 7, 0);
-        System.out.println("");
+                   break;
+               case 1:
+                   Imprimir_Matriz(Tablero, 7, 0);
+                   System.out.println("");
+                   CambiarPosicion(Turno);
+                  // Imprimir_Matriz(Tablero, 7, 0);
+                   Turno=0;
+                   break;
+           }
+           System.out.println("NUEVAS POSICIONES");
+             Imprimir_Matriz(Tablero, 7, 0);
+             System.out.println("");
+           
+       }
 
-        // System.out.println("░ B");
-        // System.out.println("▓ Blanco");
-        //System.out.println("Jugador 1"+Jugadores.get(0).getPiezas());
-        //System.out.println("Jugador 2"+Jugadores.get(1).getPiezas());
-        //imprimeMatriz(Tablero,0,0);
+        
     }
 
     public static Object[][] Llenar_Matriz() {
@@ -180,9 +201,9 @@ public class Proyecto_Programación_Claudia_11711357 {
             /*Determinar el color de la pieza.*/
             if (!(matriz[filas][cols] instanceof String)) {
                 if (((Piezas) matriz[filas][cols]).getColor() == 1) {//Rojas
-                    System.out.print("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "   \033[30m");
+                    System.out.print("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "  \033[30m");
                 } else {//Cyan
-                    System.out.print("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "   \033[30m");
+                    System.out.print("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "  \033[30m");
                 }
             } else {
                 System.out.print(matriz[filas][cols] + "  ");
@@ -194,9 +215,9 @@ public class Proyecto_Programación_Claudia_11711357 {
                 /*Determinamos el color.*/
                 if (!(matriz[filas][cols] instanceof String)) {
                     if (((Piezas) matriz[filas][cols]).getColor() == 1) {//Rojas
-                        System.out.println("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "   \033[30m");
+                        System.out.println("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "  \033[30m");
                     } else {//Cyan
-                        System.out.println("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "   \033[30m");
+                        System.out.println("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "  \033[30m");
                     }
                 } else {//si es texto pasa esto
                     System.out.println(matriz[filas][cols]);
@@ -208,9 +229,9 @@ public class Proyecto_Programación_Claudia_11711357 {
                 /*Determinamos el color.*/
                 if (!(matriz[filas][cols] instanceof String)) {
                     if (((Piezas) matriz[filas][cols]).getColor() == 1) {//Rojas
-                        System.out.print("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "   \033[30m");
+                        System.out.print("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "  \033[30m");
                     } else {//Cyan
-                        System.out.print("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "   \033[30m");
+                        System.out.print("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "  \033[30m");
                     }
                 } else {//si es texto pasa esto
                     System.out.print(matriz[filas][cols] + "  ");
@@ -220,20 +241,60 @@ public class Proyecto_Programación_Claudia_11711357 {
 
         }
     }
-
-    public static void CambiarPosicion() {
-        System.out.println("Ingrese la Fila de la pieza que desea mover.");
-        int FilaVieja = SC.nextInt();
-        System.out.println("Ingrese la Columnade la pieza que desea mover.");
-        int ColumnaVieja = SC.nextInt();
-
-        System.out.println("Ingrese la nueva Fila de la pieza.");
-        int Fila = SC.nextInt();
-        System.out.println("Ingrese la Nueva Columna de la pieza");
-        int Columna = SC.nextInt();
-        if (ValidarMovimiento()) {
-
+    
+    public static boolean ValidarNum(int Num){
+        boolean Bandera=false;
+        if (Num>7||Num<0) {
+            Bandera=true;
         }
+        return Bandera;
+    }
+    public static boolean ValidarPiezasPropias(int Turno, Piezas P) {
+        boolean Bandera=true;
+        if(P.getId_Jugador()==Turno){
+            Bandera=false;
+        }
+    return Bandera;
+    }
+    public static void CambiarPosicion(int Turno) {
+        boolean Bandera = true;
+        boolean Bandera2 = true;
+        int ColumnaVieja = 0;
+        int FilaVieja = 0;
+        int Fila = 0;
+        int Columna = 0;
+        while (Bandera) {
+            System.out.println("Ingrese la Fila de la pieza que desea mover.");
+            FilaVieja = SC.nextInt();
+            System.out.println("Ingrese la Columnade la pieza que desea mover.");
+            ColumnaVieja = SC.nextInt();
+            if (ValidarNum(FilaVieja) || ValidarNum(ColumnaVieja)) {
+                System.out.println("\033[31mERROR EN LOS NUMEROS\033[30m");
+                continue;
+            }
+            if (Tablero[FilaVieja][ColumnaVieja] instanceof String) {
+                System.out.println("\033[31mNO PUEDE MOVER EL TABLERO\033[30m");
+                continue;
+            }
+            if (ValidarPiezasPropias(Turno, ((Piezas) Tablero[FilaVieja][ColumnaVieja]))) {
+                System.out.println("\033[31m NO PUEDES MOVER PIEZAS AJENAS\033[30m");
+            } else {
+                Bandera = false;
+            }
+        }
+        while (Bandera2) {
+            System.out.println("Ingrese la nueva Fila de la pieza.");
+            Fila = SC.nextInt();
+            System.out.println("Ingrese la Nueva Columna de la pieza");
+            Columna = SC.nextInt();
+            if (ValidarNum(Fila) || ValidarNum(Columna) || (Fila == FilaVieja && Columna == ColumnaVieja)) {
+                System.out.println("\033[31mERROR EN LOS NUMEROS\033[30m");
+                continue;
+            } else {
+                Bandera2 = false;
+            }
+        }
+
         Tablero[Fila][Columna] = Tablero[FilaVieja][ColumnaVieja];
         if (FilaVieja % 2 == 0) {//La Fila es Par
 
@@ -259,6 +320,7 @@ public class Proyecto_Programación_Claudia_11711357 {
     }
 
     public static void MovimientoTorre() {
+      
 
     }
 

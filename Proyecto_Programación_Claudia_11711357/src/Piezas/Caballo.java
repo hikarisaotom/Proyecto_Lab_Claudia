@@ -10,11 +10,11 @@ package Piezas;
  * @author Claudia Cortes
  */
 public class Caballo extends Piezas {
-    private String simbolo="C";
+    private String simbolo="♘";
 
     public Caballo() {
         super();
-        super.simbolo="C";
+        super.simbolo="♘";
         super.Nombre="Caballo";
     }
 

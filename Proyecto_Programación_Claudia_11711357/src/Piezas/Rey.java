@@ -14,7 +14,7 @@ public class Rey extends Piezas{
 
     public Rey() {
     super();
-          super.simbolo="R";
+          super.simbolo="♔";
                 super.Nombre="Rey";
     }
     

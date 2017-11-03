@@ -13,7 +13,7 @@ public class Alfil extends Piezas{
 
     public Alfil() {
         super();
-        super.simbolo="A";
+        super.simbolo="♗";
         super.Nombre="Alfil";
     }
     

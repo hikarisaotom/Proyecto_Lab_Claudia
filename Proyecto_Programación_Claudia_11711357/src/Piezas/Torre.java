@@ -12,7 +12,7 @@ package Piezas;
 public class Torre extends Piezas{
     public Torre() {
     super();
-          super.simbolo="T";
+          super.simbolo="♖";
                 super.Nombre="Torre";
     }
     

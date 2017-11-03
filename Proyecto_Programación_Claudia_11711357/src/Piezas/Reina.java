@@ -13,7 +13,7 @@ public class Reina extends Piezas{
 //private String simbolo="Q";
     public Reina() {
     super();
-          super.simbolo="Q";
+          super.simbolo="♕";
                 super.Nombre="Reina";
     }
     

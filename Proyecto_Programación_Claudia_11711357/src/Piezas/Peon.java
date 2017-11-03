@@ -13,7 +13,7 @@ public class Peon extends Piezas{
 //private String simbolo="P";
     public Peon() {
     super();
-          super.simbolo="P";
+          super.simbolo="♙";
                 super.Nombre="Peon";
     }
     
