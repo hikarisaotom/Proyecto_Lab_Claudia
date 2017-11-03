@@ -12,7 +12,8 @@ public class Proyecto_Programación_Claudia_11711357 {
     public static Object[][] Tablero;
     public static Scanner SC = new Scanner(System.in);
     public static boolean Ganador = false;
-    public static int Turno=0;
+    public static int Turno = 0;
+
     public static void main(String[] args) {
         System.out.println("Ingrese el Nombre del Jugador 1");
         String Nombre = SC.next();
@@ -30,37 +31,36 @@ public class Proyecto_Programación_Claudia_11711357 {
         Jugadores.add(new Jugador(Nombre, 1, ID));
         Tablero = Llenar_Matriz();
         Tablero = Cargar_Piezas(Tablero);
-        
-       while(true){
-           if (Ganador) {
-               System.out.println("Felicidades "+Jugadores.get(Turno).getNombre()+" ha ganado!");
-           }
-            System.out.println("");
-           System.out.println("Turno de "+Jugadores.get(Turno).getNombre());
-           System.out.println("");
-           switch (Turno){
-               case 0:
-                    Imprimir_Matriz(Tablero, 7, 0);
-                   System.out.println("");
-                   CambiarPosicion(Turno);
-                   Turno=1;
-        System.out.println("");
-                   break;
-               case 1:
-                   Imprimir_Matriz(Tablero, 7, 0);
-                   System.out.println("");
-                   CambiarPosicion(Turno);
-                  // Imprimir_Matriz(Tablero, 7, 0);
-                   Turno=0;
-                   break;
-           }
-           System.out.println("NUEVAS POSICIONES");
-             Imprimir_Matriz(Tablero, 7, 0);
-             System.out.println("");
-           
-       }
 
-        
+        while (true) {
+            if (Ganador) {
+                System.out.println("Felicidades " + Jugadores.get(Turno).getNombre() + " ha ganado!");
+            }
+            System.out.println("");
+            System.out.println("Turno de " + Jugadores.get(Turno).getNombre());
+            System.out.println("");
+            switch (Turno) {
+                case 0:
+                    Imprimir_Matriz(Tablero, 7, 0);
+                    System.out.println("");
+                    CambiarPosicion(Turno);
+                    Turno = 1;
+                    System.out.println("");
+                    break;
+                case 1:
+                    Imprimir_Matriz(Tablero, 7, 0);
+                    System.out.println("");
+                    CambiarPosicion(Turno);
+                    // Imprimir_Matriz(Tablero, 7, 0);
+                    Turno = 0;
+                    break;
+            }
+            System.out.println("NUEVAS POSICIONES");
+            Imprimir_Matriz(Tablero, 7, 0);
+            System.out.println("");
+
+        }
+
     }
 
     public static Object[][] Llenar_Matriz() {
@@ -241,21 +241,23 @@ public class Proyecto_Programación_Claudia_11711357 {
 
         }
     }
-    
-    public static boolean ValidarNum(int Num){
-        boolean Bandera=false;
-        if (Num>7||Num<0) {
-            Bandera=true;
+
+    public static boolean ValidarNum(int Num) {
+        boolean Bandera = false;
+        if (Num > 7 || Num < 0) {
+            Bandera = true;
         }
         return Bandera;
     }
+
     public static boolean ValidarPiezasPropias(int Turno, Piezas P) {
-        boolean Bandera=true;
-        if(P.getId_Jugador()==Turno){
-            Bandera=false;
+        boolean Bandera = true;
+        if (P.getId_Jugador() == Turno) {
+            Bandera = false;
         }
-    return Bandera;
+        return Bandera;
     }
+
     public static void CambiarPosicion(int Turno) {
         boolean Bandera = true;
         boolean Bandera2 = true;
@@ -290,17 +292,14 @@ public class Proyecto_Programación_Claudia_11711357 {
             if (ValidarNum(Fila) || ValidarNum(Columna) || (Fila == FilaVieja && Columna == ColumnaVieja)) {
                 System.out.println("\033[31mERROR EN LOS NUMEROS\033[30m");
                 continue;
-            } 
-            if (!MovimientoTorre(FilaVieja,ColumnaVieja,Fila,Columna)) {
-            System.out.println("\033[31m MOVIMIENTO INVALIDO PARA LA TORRE\033[30m");
+            }
+            if (!MovimientoTorre(FilaVieja, ColumnaVieja, Fila, Columna)) {
+                System.out.println("\033[31m MOVIMIENTO INVALIDO PARA LA TORRE\033[30m");
                 continue;
-            }  
-            
+            }
             Bandera2 = false;
         }
-        
-        
-        
+
         Tablero[Fila][Columna] = Tablero[FilaVieja][ColumnaVieja];
         if (FilaVieja % 2 == 0) {//La Fila es Par
 
@@ -326,39 +325,44 @@ public class Proyecto_Programación_Claudia_11711357 {
     }
 
     public static boolean MovimientoTorre(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
-        boolean Mover= false;
-        if(F_Vieja==F_Nueva&&C_Nueva==C_Vieja){
+        boolean Mover = false;
+        if (F_Vieja == F_Nueva && C_Nueva == C_Vieja) {
             return false;
         }
         //El movimiento esta en la misma fila, una fila abajo, o una fila arriba.
-        if (F_Vieja==F_Nueva||F_Vieja==F_Nueva-1||F_Vieja==F_Nueva+1) {
-              //El movimiento esta una columna al lado, una columna antes o en la msma columna.
-            if(C_Vieja==C_Nueva-1||C_Vieja==C_Nueva+1||C_Vieja==C_Nueva){
-              return true;  
+        if (F_Vieja == F_Nueva || F_Vieja == F_Nueva - 1 || F_Vieja == F_Nueva + 1) {
+            //El movimiento esta una columna al lado, una columna antes o en la msma columna.
+            if (C_Vieja == C_Nueva - 1 || C_Vieja == C_Nueva + 1 || C_Vieja == C_Nueva) {
+                return true;
             }
-            
+
         }
-    return Mover;
+        return Mover;
     }
 
-    public static void MovimientoCaballo() {
-
+    public static boolean MovimientoCaballo() {
+        boolean Mover = false;
+        return Mover;
     }
 
-    public static void MovimientoAlfil() {
-
+    public static boolean MovimientoAlfil() {
+        boolean Mover = false;
+        return Mover;
     }
 
-    public static void MovimientoReina() {
-
+    public static boolean MovimientoReina() {
+        boolean Mover = false;
+        return Mover;
     }
 
-    public static void MovimientoRey() {
-
+    public static boolean MovimientoRey() {
+        boolean Mover = false;
+        return Mover;
     }
 
-    public static void MovimientoPeon() {
-
+    public static boolean MovimientoPeon() {
+        boolean Mover = false;
+        return Mover;
     }
     /**
      * METODOS DE PRUEBA/ /*public static void imprimeMatriz(Object matriz[][],
