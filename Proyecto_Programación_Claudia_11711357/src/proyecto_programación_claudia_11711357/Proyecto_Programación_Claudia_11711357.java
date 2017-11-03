@@ -15,8 +15,8 @@ public class Proyecto_Programación_Claudia_11711357 {
         System.out.println("Ingrese el Nombre del Jugador 1");
         String Nombre = SC.next();
         System.out.println("Seleccione el color con el que desea jugar: \n\n"
-                + "1)Blancas(Se mostraran Rojas).\n 2)Negras(Se mostraran Verdes) ");
-        int ID = SC.nextInt();
+                + " 1)\033[32mVerdes.\033[30m \n2)\033[36mCyan.\033[30m");
+        int ID = SC.nextInt(); 
         Jugadores.add(new Jugador(Nombre, 0, ID));
         if (ID == 1) {
             ID = 2;
@@ -30,6 +30,15 @@ public class Proyecto_Programación_Claudia_11711357 {
         Tablero = Llenar_Matriz();
         Tablero = Cargar_Piezas(Tablero);
         Imprimir_Matriz(Tablero, 7, 0);
+        System.out.println("");
+        CambiarPosicion();
+        Imprimir_Matriz(Tablero, 7, 0);
+                System.out.println("");
+
+       // System.out.println("░ B");
+       // System.out.println("▓ Blanco");
+        //System.out.println("Jugador 1"+Jugadores.get(0).getPiezas());
+        //System.out.println("Jugador 2"+Jugadores.get(1).getPiezas());
         //imprimeMatriz(Tablero,0,0);
     }
 
@@ -71,7 +80,7 @@ public class Proyecto_Programación_Claudia_11711357 {
             }
         }
 
-        Jugador += 1;
+        Jugador =1;
         Contador = 0;
     
         for (int i = 7; i >5; i--) {
@@ -136,8 +145,14 @@ public class Proyecto_Programación_Claudia_11711357 {
         for (int i = 0; i < 8; i++) {
             Jugadores.get(Num).setPiezas(new Peon());
             int tamano = Jugadores.get(Num).getPiezas().size() - 1;
+            int ColorID = Jugadores.get(Num).getColor_Piezas();
             Jugadores.get(Num).getPiezas().get(tamano).setId_Jugador(Num);
-            Jugadores.get(Num).getPiezas().get(tamano).setPuntos(1);
+            Jugadores.get(Num).getPiezas().get(tamano).setColor(ColorID);
+            Jugadores.get(Num).getPiezas().get(tamano).setPuntos(1); 
+            /*Jugadores.get(Num).setPiezas(new Peon());
+            int tamano = Jugadores.get(Num).getPiezas().size() - 1;
+            Jugadores.get(Num).getPiezas().get(tamano).setId_Jugador(Num);
+            Jugadores.get(Num).getPiezas().get(tamano).setPuntos(1);*/
         }
     }
 
@@ -158,9 +173,9 @@ public class Proyecto_Programación_Claudia_11711357 {
             /*Determinar el color de la pieza.*/
             if (!(matriz[filas][cols] instanceof String)) {
                 if (((Piezas) matriz[filas][cols]).getColor() == 1) {//Rojas
-                    System.out.print("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "\033[30m  ");
+                    System.out.print("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "   \033[30m");
                 } else {//Cyan
-                    System.out.print("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "\033[30m  ");
+                    System.out.print("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "   \033[30m");
                 }
             } else {
                 System.out.print(matriz[filas][cols] + "  ");
@@ -172,9 +187,9 @@ public class Proyecto_Programación_Claudia_11711357 {
                 /*Determinamos el color.*/
                 if (!(matriz[filas][cols] instanceof String)) {
                     if (((Piezas) matriz[filas][cols]).getColor() == 1) {//Rojas
-                        System.out.println("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "\033[30m  ");
+                        System.out.println("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "   \033[30m");
                     } else {//Cyan
-                        System.out.println("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "\033[30m  ");
+                        System.out.println("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "   \033[30m");
                     }
                 } else {//si es texto pasa esto
                     System.out.println(matriz[filas][cols]);
@@ -186,9 +201,9 @@ public class Proyecto_Programación_Claudia_11711357 {
                 /*Determinamos el color.*/
                 if (!(matriz[filas][cols] instanceof String)) {
                     if (((Piezas) matriz[filas][cols]).getColor() == 1) {//Rojas
-                        System.out.print("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "\033[30m  ");
+                        System.out.print("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "   \033[30m");
                     } else {//Cyan
-                        System.out.print("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "\033[30m  ");
+                        System.out.print("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "   \033[30m");
                     }
                 } else {//si es texto pasa esto
                     System.out.print(matriz[filas][cols] + "  ");
@@ -199,6 +214,36 @@ public class Proyecto_Programación_Claudia_11711357 {
         }
     }
 
+    public static void CambiarPosicion(){
+          System.out.println("Ingrese la Fila de la pieza que desea mover.");
+        int FilaVieja=SC.nextInt();
+        System.out.println("Ingrese la Columnade la pieza que desea mover.");
+        int ColumnaVieja=SC.nextInt();
+        
+        System.out.println("Ingrese la nueva Fila de la pieza.");
+        int Fila = SC.nextInt();
+        System.out.println("Ingrese la Nueva Columna de la pieza");
+        int Columna = SC.nextInt();
+        Tablero[Fila][Columna] = Tablero[FilaVieja][ColumnaVieja];
+        if (FilaVieja % 2 == 0) {//La Fila es Par
+            
+            if (ColumnaVieja % 2 == 0) {//Columna Par (Blanco)
+                  Tablero[FilaVieja][ColumnaVieja] = "░";
+               
+            } else {//Columna Impar (Negro)
+               Tablero[FilaVieja][ColumnaVieja] = "▓";
+            }
+        } else { //La fila es impar.
+            
+            if (ColumnaVieja % 2 == 0) {//Columna Par (Negro)
+                   Tablero[FilaVieja][ColumnaVieja] = "▓";
+            } else {//Columna Impar (Blanco)
+              Tablero[FilaVieja][ColumnaVieja] = "░";
+            }
+        }
+    }
+
+    
     /**
      * METODOS DE PRUEBA/ /*public static void imprimeMatriz(Object matriz[][],
      * int filas, int cols) { if (filas == matriz.length - 1 && cols ==
