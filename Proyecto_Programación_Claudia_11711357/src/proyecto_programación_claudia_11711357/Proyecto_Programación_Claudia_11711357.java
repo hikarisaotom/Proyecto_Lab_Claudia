@@ -16,7 +16,7 @@ public class Proyecto_Programación_Claudia_11711357 {
         String Nombre = SC.next();
         System.out.println("Seleccione el color con el que desea jugar: \n\n"
                 + " 1)\033[32mVerdes.\033[30m \n2)\033[36mCyan.\033[30m");
-        int ID = SC.nextInt(); 
+        int ID = SC.nextInt();
         Jugadores.add(new Jugador(Nombre, 0, ID));
         if (ID == 1) {
             ID = 2;
@@ -33,10 +33,10 @@ public class Proyecto_Programación_Claudia_11711357 {
         System.out.println("");
         CambiarPosicion();
         Imprimir_Matriz(Tablero, 7, 0);
-                System.out.println("");
+        System.out.println("");
 
-       // System.out.println("░ B");
-       // System.out.println("▓ Blanco");
+        // System.out.println("░ B");
+        // System.out.println("▓ Blanco");
         //System.out.println("Jugador 1"+Jugadores.get(0).getPiezas());
         //System.out.println("Jugador 2"+Jugadores.get(1).getPiezas());
         //imprimeMatriz(Tablero,0,0);
@@ -80,10 +80,10 @@ public class Proyecto_Programación_Claudia_11711357 {
             }
         }
 
-        Jugador =1;
+        Jugador = 1;
         Contador = 0;
-    
-        for (int i = 7; i >5; i--) {
+
+        for (int i = 7; i > 5; i--) {
             for (int j = 0; j < 8; j++) {
                 matriz[i][j] = Jugadores.get(Jugador).getPiezas().get(Contador);
                 Contador += 1;
@@ -96,7 +96,7 @@ public class Proyecto_Programación_Claudia_11711357 {
     public static void Piezas_Jugador(int Num) {
         int Bandera = 0;
         int Pts = 3;
-        boolean Cambio=false;
+        boolean Cambio = false;
         for (int i = 0; i < 8; i++) {
             switch (Bandera) {
                 case 0://Torre
@@ -116,11 +116,11 @@ public class Proyecto_Programación_Claudia_11711357 {
                     break;
                 case 2://Alfil
                     if (Cambio) {
-                    Bandera = 1;
-                    Pts = 3;
-                    }else{
-                    Bandera = 3;
-                    Pts = 5;
+                        Bandera = 1;
+                        Pts = 3;
+                    } else {
+                        Bandera = 3;
+                        Pts = 5;
                     }
                     Jugadores.get(Num).setPiezas(new Alfil());
                     break;
@@ -132,7 +132,7 @@ public class Proyecto_Programación_Claudia_11711357 {
                 case 4://Reina
                     Bandera = 2;
                     Pts = 3;
-                    Cambio=true;
+                    Cambio = true;
                     Jugadores.get(Num).setPiezas(new Reina());
                     break;
             }
@@ -148,7 +148,7 @@ public class Proyecto_Programación_Claudia_11711357 {
             int ColorID = Jugadores.get(Num).getColor_Piezas();
             Jugadores.get(Num).getPiezas().get(tamano).setId_Jugador(Num);
             Jugadores.get(Num).getPiezas().get(tamano).setColor(ColorID);
-            Jugadores.get(Num).getPiezas().get(tamano).setPuntos(1); 
+            Jugadores.get(Num).getPiezas().get(tamano).setPuntos(1);
             /*Jugadores.get(Num).setPiezas(new Peon());
             int tamano = Jugadores.get(Num).getPiezas().size() - 1;
             Jugadores.get(Num).getPiezas().get(tamano).setId_Jugador(Num);
@@ -158,10 +158,17 @@ public class Proyecto_Programación_Claudia_11711357 {
 
     public static void Imprimir_Matriz(Object matriz[][], int filas, int cols) {
         String[] Letras = {"A", "  B", "  C", " D", "  E", "  F", "  G", "  H"};
+
         if (filas == 7 && cols == 0) {
             System.out.print("++");
             for (String Letra : Letras) {
                 System.out.print(Letra + " ");
+
+            }
+            System.out.println("");
+            System.out.print("++");
+            for (int i = 0; i < 8; i++) {
+                System.out.print(i + "   ");
             }
             System.out.println("");
         }
@@ -214,36 +221,66 @@ public class Proyecto_Programación_Claudia_11711357 {
         }
     }
 
-    public static void CambiarPosicion(){
-          System.out.println("Ingrese la Fila de la pieza que desea mover.");
-        int FilaVieja=SC.nextInt();
+    public static void CambiarPosicion() {
+        System.out.println("Ingrese la Fila de la pieza que desea mover.");
+        int FilaVieja = SC.nextInt();
         System.out.println("Ingrese la Columnade la pieza que desea mover.");
-        int ColumnaVieja=SC.nextInt();
-        
+        int ColumnaVieja = SC.nextInt();
+
         System.out.println("Ingrese la nueva Fila de la pieza.");
         int Fila = SC.nextInt();
         System.out.println("Ingrese la Nueva Columna de la pieza");
         int Columna = SC.nextInt();
+        if (ValidarMovimiento()) {
+
+        }
         Tablero[Fila][Columna] = Tablero[FilaVieja][ColumnaVieja];
         if (FilaVieja % 2 == 0) {//La Fila es Par
-            
+
             if (ColumnaVieja % 2 == 0) {//Columna Par (Blanco)
-                  Tablero[FilaVieja][ColumnaVieja] = "░";
-               
+                Tablero[FilaVieja][ColumnaVieja] = "░";
+
             } else {//Columna Impar (Negro)
-               Tablero[FilaVieja][ColumnaVieja] = "▓";
+                Tablero[FilaVieja][ColumnaVieja] = "▓";
             }
         } else { //La fila es impar.
-            
+
             if (ColumnaVieja % 2 == 0) {//Columna Par (Negro)
-                   Tablero[FilaVieja][ColumnaVieja] = "▓";
+                Tablero[FilaVieja][ColumnaVieja] = "▓";
             } else {//Columna Impar (Blanco)
-              Tablero[FilaVieja][ColumnaVieja] = "░";
+                Tablero[FilaVieja][ColumnaVieja] = "░";
             }
         }
     }
 
-    
+    public static boolean ValidarMovimiento() {
+        boolean Acceso = true;
+        return Acceso;
+    }
+
+    public static void MovimientoTorre() {
+
+    }
+
+    public static void MovimientoCaballo() {
+
+    }
+
+    public static void MovimientoAlfil() {
+
+    }
+
+    public static void MovimientoReina() {
+
+    }
+
+    public static void MovimientoRey() {
+
+    }
+
+    public static void MovimientoPeon() {
+
+    }
     /**
      * METODOS DE PRUEBA/ /*public static void imprimeMatriz(Object matriz[][],
      * int filas, int cols) { if (filas == matriz.length - 1 && cols ==
