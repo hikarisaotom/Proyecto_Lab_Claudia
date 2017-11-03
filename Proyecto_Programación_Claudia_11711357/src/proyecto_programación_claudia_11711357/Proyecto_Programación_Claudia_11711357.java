@@ -96,17 +96,19 @@ public class Proyecto_Programación_Claudia_11711357 {
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 matriz[i][j] = Jugadores.get(Jugador).getPiezas().get(Contador);
+                Jugadores.get(Jugador).getPiezas().get(Contador).setPosicion(i + "-" + j);
                 //matriz[i][j] = Jugadores.get(Jugador).getPiezas().get(j);
                 Contador += 1;
             }
         }
-
+        //System.out.println("Piezas del jugador"+Jugador+Jugadores.get(Jugador).getPiezas());
         Jugador = 1;
         Contador = 0;
 
         for (int i = 7; i > 5; i--) {
             for (int j = 0; j < 8; j++) {
                 matriz[i][j] = Jugadores.get(Jugador).getPiezas().get(Contador);
+                Jugadores.get(Jugador).getPiezas().get(Contador).setPosicion(i + "-" + j);
                 Contador += 1;
             }
         }
@@ -170,6 +172,7 @@ public class Proyecto_Programación_Claudia_11711357 {
             Jugadores.get(Num).getPiezas().get(tamano).setId_Jugador(Num);
             Jugadores.get(Num).getPiezas().get(tamano).setColor(ColorID);
             Jugadores.get(Num).getPiezas().get(tamano).setPuntos(1);
+
             /*Jugadores.get(Num).setPiezas(new Peon());
             int tamano = Jugadores.get(Num).getPiezas().size() - 1;
             Jugadores.get(Num).getPiezas().get(tamano).setId_Jugador(Num);
@@ -284,6 +287,7 @@ public class Proyecto_Programación_Claudia_11711357 {
                 Bandera = false;
             }
         }
+       
         while (Bandera2) {
             System.out.println("Ingrese la nueva Fila de la pieza.");
             Fila = SC.nextInt();
@@ -293,12 +297,44 @@ public class Proyecto_Programación_Claudia_11711357 {
                 System.out.println("\033[31mERROR EN LOS NUMEROS\033[30m");
                 continue;
             }
-            if (!MovimientoTorre(FilaVieja, ColumnaVieja, Fila, Columna)) {
-                System.out.println("\033[31m MOVIMIENTO INVALIDO PARA LA TORRE\033[30m");
-                continue;
+
+            if (Tablero[FilaVieja][ColumnaVieja] instanceof Torre) {
+
+                if (!MovimientoTorre(FilaVieja, ColumnaVieja, Fila, Columna)) {
+                    System.out.println("\033[31m MOVIMIENTO INVALIDO PARA LA TORRE\033[30m");
+                    continue;
+                }
+            } else if (Tablero[FilaVieja][ColumnaVieja] instanceof Peon) {
+                
+                if (!MovimientoPeon(FilaVieja, ColumnaVieja, Fila, Columna)) {
+                    System.out.println("\033[31m MOVIMIENTO INVALIDO PARA EL PEON\033[30m");
+                    continue;
+                }
+/*
+            } else if (Tablero[FilaVieja][ColumnaVieja] instanceof Alfil) {
+                if (!MovimientoAlfil(FilaVieja, ColumnaVieja, Fila, Columna)) {
+                    System.out.println("\033[31m MOVIMIENTO INVALIDO PARA EL ALFIL\033[30m");
+                    continue;
+                }
+
+            } else if (Tablero[FilaVieja][ColumnaVieja] instanceof Reina) {
+                if (!MovimientoReina(FilaVieja, ColumnaVieja, Fila, Columna)) {
+                    System.out.println("\033[31m MOVIMIENTO INVALIDO PARALA REINA \033[30m");
+                    continue;
+                }
+            } else if (Tablero[FilaVieja][ColumnaVieja] instanceof Rey) {
+                if (!MovimientoRey(FilaVieja, ColumnaVieja, Fila, Columna)) {
+                    System.out.println("\033[31m MOVIMIENTO INVALIDO PARA EL REY \033[30m");
+                    continue;
+                }
+            } else if (Tablero[FilaVieja][ColumnaVieja] instanceof Caballo) {
+                if (!MovimientoCaballo(FilaVieja, ColumnaVieja, Fila, Columna)) {
+                    System.out.println("\033[31m MOVIMIENTO INVALIDO PARA EL CABALLO\033[30m");
+                    continue;
+                }*/
             }
             Bandera2 = false;
-        }
+        }//Fin del while
 
         Tablero[Fila][Columna] = Tablero[FilaVieja][ColumnaVieja];
         if (FilaVieja % 2 == 0) {//La Fila es Par
@@ -340,28 +376,49 @@ public class Proyecto_Programación_Claudia_11711357 {
         return Mover;
     }
 
-    public static boolean MovimientoCaballo() {
+    public static boolean MovimientoCaballo(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
         boolean Mover = false;
         return Mover;
     }
 
-    public static boolean MovimientoAlfil() {
+    public static boolean MovimientoAlfil(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
         boolean Mover = false;
         return Mover;
     }
 
-    public static boolean MovimientoReina() {
+    public static boolean MovimientoReina(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
         boolean Mover = false;
         return Mover;
     }
 
-    public static boolean MovimientoRey() {
+    public static boolean MovimientoRey (int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
         boolean Mover = false;
         return Mover;
     }
 
-    public static boolean MovimientoPeon() {
+    public static boolean MovimientoPeon(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
         boolean Mover = false;
+        int Num = 0;
+        int Num2 = 0;
+        if (((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador() == 0) {
+            Num = 2;
+            Num2 = 1;
+        } else {
+            Num = -2;
+            Num2 = -1;
+        }
+        if (((Piezas) Tablero[F_Vieja][C_Vieja]).getPosicion().equals(F_Vieja + "-" + C_Vieja)) {//En caso de que sea su primer movimiento
+            //System.out.println("Puede moverse dos para arriba");
+            if (F_Vieja + Num == F_Nueva && C_Vieja == C_Nueva || F_Vieja + Num2 == F_Nueva && C_Vieja == C_Nueva) { //Solo puede moverse 2 casillas maximo
+                return true;
+            } else {
+                return false;
+            }
+        } else {//En caso de que no sea su primer movimiento.
+            if (F_Vieja + Num2 == F_Nueva && C_Vieja == C_Nueva) {
+                return true;
+            }
+        }
         return Mover;
     }
     /**
