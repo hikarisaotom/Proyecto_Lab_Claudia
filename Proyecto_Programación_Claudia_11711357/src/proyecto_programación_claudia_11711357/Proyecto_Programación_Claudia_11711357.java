@@ -290,11 +290,17 @@ public class Proyecto_Programación_Claudia_11711357 {
             if (ValidarNum(Fila) || ValidarNum(Columna) || (Fila == FilaVieja && Columna == ColumnaVieja)) {
                 System.out.println("\033[31mERROR EN LOS NUMEROS\033[30m");
                 continue;
-            } else {
-                Bandera2 = false;
-            }
+            } 
+            if (!MovimientoTorre(FilaVieja,ColumnaVieja,Fila,Columna)) {
+            System.out.println("\033[31m MOVIMIENTO INVALIDO PARA LA TORRE\033[30m");
+                continue;
+            }  
+            
+            Bandera2 = false;
         }
-
+        
+        
+        
         Tablero[Fila][Columna] = Tablero[FilaVieja][ColumnaVieja];
         if (FilaVieja % 2 == 0) {//La Fila es Par
 
@@ -319,9 +325,20 @@ public class Proyecto_Programación_Claudia_11711357 {
         return Acceso;
     }
 
-    public static void MovimientoTorre() {
-      
-
+    public static boolean MovimientoTorre(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
+        boolean Mover= false;
+        if(F_Vieja==F_Nueva&&C_Nueva==C_Vieja){
+            return false;
+        }
+        //El movimiento esta en la misma fila, una fila abajo, o una fila arriba.
+        if (F_Vieja==F_Nueva||F_Vieja==F_Nueva-1||F_Vieja==F_Nueva+1) {
+              //El movimiento esta una columna al lado, una columna antes o en la msma columna.
+            if(C_Vieja==C_Nueva-1||C_Vieja==C_Nueva+1||C_Vieja==C_Nueva){
+              return true;  
+            }
+            
+        }
+    return Mover;
     }
 
     public static void MovimientoCaballo() {
