@@ -10,6 +10,7 @@ public class Proyecto_Programación_Claudia_11711357 {
 
     public static ArrayList<Jugador> Jugadores = new ArrayList();
     public static Object[][] Tablero;
+     public static Object[][] Tab;
     public static Scanner SC = new Scanner(System.in);
     public static boolean Ganador = false;
     public static int Turno = 0;
@@ -31,7 +32,7 @@ public class Proyecto_Programación_Claudia_11711357 {
         Jugadores.add(new Jugador(Nombre, 1, ID));
         Tablero = Llenar_Matriz();
         Tablero = Cargar_Piezas(Tablero);
-
+            Tab=Llenar_Matriz();
         while (true) {
             if (Ganador) {
                 System.out.println("Felicidades " + Jugadores.get(Turno).getNombre() + " ha ganado!");
@@ -57,6 +58,7 @@ public class Proyecto_Programación_Claudia_11711357 {
             }
             System.out.println("NUEVAS POSICIONES");
             Imprimir_Matriz(Tablero, 7, 0);
+             Imprimir_Matriz(Tab, 7, 0);
             System.out.println("");
 
         }
@@ -65,7 +67,7 @@ public class Proyecto_Programación_Claudia_11711357 {
 
     public static Object[][] Llenar_Matriz() {
         Object[][] Tablero = new Object[8][8];
-        boolean Bandera = false;
+        boolean Bandera = true; /*SOLO CAMBIASTE LA BANDERA DE FALSE A TRUE*/
         for (int i = 0; i < 8; i++) {
             if (i % 2 == 0) {
                 Bandera = true;
@@ -310,13 +312,13 @@ public class Proyecto_Programación_Claudia_11711357 {
                     System.out.println("\033[31m MOVIMIENTO INVALIDO PARA EL PEON\033[30m");
                     continue;
                 }
-/*
+
             } else if (Tablero[FilaVieja][ColumnaVieja] instanceof Alfil) {
                 if (!MovimientoAlfil(FilaVieja, ColumnaVieja, Fila, Columna)) {
                     System.out.println("\033[31m MOVIMIENTO INVALIDO PARA EL ALFIL\033[30m");
                     continue;
                 }
-
+/*
             } else if (Tablero[FilaVieja][ColumnaVieja] instanceof Reina) {
                 if (!MovimientoReina(FilaVieja, ColumnaVieja, Fila, Columna)) {
                     System.out.println("\033[31m MOVIMIENTO INVALIDO PARALA REINA \033[30m");
@@ -383,6 +385,17 @@ public class Proyecto_Programación_Claudia_11711357 {
 
     public static boolean MovimientoAlfil(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
         boolean Mover = false;
+        /*RECUERDA CAMBIAR EL BOOLEANO DE NUEVO A FALSO.*/
+        int Num=0;
+           Num = F_Nueva - F_Vieja;
+        if (F_Nueva < 0) {
+            System.out.println("MOVIMIENTO HACIA ABAJO.");
+        } else {
+            System.out.println("MOVIMIENTO HACIA ARRIBA");
+        }
+        if (F_Vieja+Num==C_Nueva) {
+            return true;    
+        }
         return Mover;
     }
 
