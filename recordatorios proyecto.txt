@@ -1,0 +1,10 @@
+Pendientes.
+Polimorfismo
+validar que se coman las piezas. (Todas menos el peon)
+validar que gane
+
+NINGUNA MENOS EL CABELO PUEDEN SALTAR A LAS DEMAS PIEZAS.
+Para Mover Arriba Esta bien, El Problema esta las validaciones de abajo
+ 
+error con las piezas al tratar de comer cuando se mueve para la izquierda.
+validar de si va para arriba o hacia abajo. y luego validar que si va para la derecha o la izquierda.

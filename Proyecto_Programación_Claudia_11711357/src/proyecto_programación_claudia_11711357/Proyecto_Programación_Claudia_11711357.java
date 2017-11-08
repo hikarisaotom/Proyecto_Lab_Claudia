@@ -475,8 +475,10 @@ public class Proyecto_Programación_Claudia_11711357 {
                 return false;
             }
         } else {//En caso de que no sea su primer movimiento.
-            if (F_Vieja + Num2 == F_Nueva && C_Vieja == C_Nueva) {
+            if (F_Vieja + Num2 == F_Nueva && C_Vieja == C_Nueva&&Tablero[F_Nueva][C_Nueva] instanceof String) {
                 return true;
+            }else if (Tablero[F_Nueva][C_Nueva] instanceof Piezas){
+                System.out.println("EL PEON TIENE EL PASO BLOQUEADO");
             }
         }
         return Mover;
