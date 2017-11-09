@@ -8,3 +8,10 @@ Para Mover Arriba Esta bien, El Problema esta las validaciones de abajo
  
 error con las piezas al tratar de comer cuando se mueve para la izquierda.
 validar de si va para arriba o hacia abajo. y luego validar que si va para la derecha o la izquierda.
+
+
+YA ESTAN EL PEON Y LA TORRE,Y EL CABALLO.
+
+FALTA EL REY, LA REINA,erroe en la izquierda hacia arriba 
+
+derecha hacia rriba funciona el bloqueo.

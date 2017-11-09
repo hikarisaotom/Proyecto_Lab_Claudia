@@ -57,7 +57,7 @@ public class Proyecto_Programación_Claudia_11711357 {
                     Turno = 0;
                     break;
             }
-           System.out.println("→ NUEVAS POSICIONES ←");
+            System.out.println("→ NUEVAS POSICIONES ←");
             //Imprimir_Matriz(Tablero, 7, 0);
             // Imprimir_Matriz(Tab, 7, 0);
             System.out.println("");
@@ -395,45 +395,6 @@ public class Proyecto_Programación_Claudia_11711357 {
         return Mover;
     }
 
-    public static boolean MovimientoAlfil(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
-        boolean Mover = false;
-
-        int Num = 0;
-        Num = F_Nueva - F_Vieja;
-        //System.out.println("Numero de Casillas que subira o Bajara"+Num);
-        if (F_Nueva < 0) {
-            System.out.println("MOVIMIENTO HACIA ABAJO.");
-        } else {
-            System.out.println("MOVIMIENTO HACIA ARRIBA");
-        }
-        if (C_Vieja + Num == C_Nueva || C_Vieja - Num == C_Nueva) {
-            Mover = true;
-        }else{
-            return false;
-        }
-        if (AlfilComer(F_Vieja, C_Vieja, F_Nueva, C_Nueva)&&Mover) {
-           Mover=true;
-        }
-        //System.out.println("Numero de Casillas que subira o Bajara");
-        return Mover;
-    }
-
-    /*RECUERDA CAMBIAR EL BOOLEANO DE NUEVO A FALSO.Clase del Alfin*/
- /* public static boolean MovimientoAlfil(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
-        boolean Mover = false;
-        
-        int Num=0;
-           Num = F_Nueva - F_Vieja;
-        if (F_Nueva < 0) {
-            System.out.println("MOVIMIENTO HACIA ABAJO.");
-        } else {
-            System.out.println("MOVIMIENTO HACIA ARRIBA");
-        }
-        if (F_Vieja+Num==C_Nueva) {
-            return true;    
-        }
-        return Mover;
-    }*/
     public static boolean MovimientoReina(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
         boolean Mover = false;
         return Mover;
@@ -477,9 +438,9 @@ public class Proyecto_Programación_Claudia_11711357 {
                 return false;
             }
         } else {//En caso de que no sea su primer movimiento.
-            if (F_Vieja + Num2 == F_Nueva && C_Vieja == C_Nueva&&Tablero[F_Nueva][C_Nueva] instanceof String) {
+            if (F_Vieja + Num2 == F_Nueva && C_Vieja == C_Nueva && Tablero[F_Nueva][C_Nueva] instanceof String) {
                 return true;
-            }else if (Tablero[F_Nueva][C_Nueva] instanceof Piezas){
+            } else if (Tablero[F_Nueva][C_Nueva] instanceof Piezas) {
                 System.out.println("EL PEON TIENE EL PASO BLOQUEADO");
             }
         }
@@ -583,7 +544,7 @@ public class Proyecto_Programación_Claudia_11711357 {
             }
         } else if (C_Nueva == C_Vieja) {//Misma  Columna(es arriba o abajo(
             if (Dif_F < 0) {//El Movimiento es hacia abajo.
-                while (Cont <= (Dif_F*-1)) {
+                while (Cont <= (Dif_F * -1)) {
                     if (Tablero[F_Vieja - Cont][C_Vieja] instanceof Piezas) {
                         if (((Piezas) Tablero[F_Vieja - Cont][C_Vieja]).getId_Jugador() == idActual) {
                             System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
@@ -632,12 +593,9 @@ public class Proyecto_Programación_Claudia_11711357 {
         return Mover;
 
     }
-    
-    
-    
-    
-    public static boolean AlfilComer(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva){
-         boolean Mover = false;
+
+    public static boolean MovimientoAlfil(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
+        boolean Mover = false;
         int idActual = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
         int idOponente;
         if (idActual == 0) {
@@ -645,67 +603,180 @@ public class Proyecto_Programación_Claudia_11711357 {
         } else {
             idOponente = 0;
         }
-        int Cont=0;
+        int Cont = 1;
         int Num = 0;
         Num = F_Nueva - F_Vieja;
-        if (Num < 0) {//Movimiento hacia abajo
-            if (F_Nueva < F_Vieja) {//Movimeinto hacia la izquierda
-                while (Cont < (Num * 1)) {
-                    if (F_Nueva - Cont >= 0 && C_Vieja - Cont >= 0) {
-                        if (Tablero[F_Vieja - Cont][C_Vieja - Cont] instanceof Piezas) {
-                            if (((Piezas) Tablero[F_Vieja - Cont][C_Vieja - Cont]).getId_Jugador() == idActual) {
-                                System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
-                                return false;
-                            } else {//La Pieza es ajena.
-                                if (F_Vieja - Cont < F_Nueva) {
-                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una pieza ajena.");
-                                    System.out.println("");
-                                    return false;
-                                } else {
-                                    System.out.println("LA TORRE SE HA COMIDO UNA PIEZA!");
-                                    return true;
-                                }
-                            }
-                        } else {
-                            System.out.println("Espacio Vacio es" + F_Vieja + "-" + (C_Vieja - Cont));
-                        }
-                        Cont++;
-                    }//Fin del if que decide si estamos o no dentro del tablero.
-                }
-                return true;/*SI LLEGO A ESTE PUNTO NO ENCONTRO NINGUNA PIEZA EN EL CAMINO*/
-            } else {//Movimeinto hacia la derecha
-                
-            }
-        } else {//Movimiento hacia arriba.
-
+        if (F_Nueva < 0) {
+            System.out.println("MOVIMIENTO HACIA ABAJO.");
+        } else {
+            System.out.println("MOVIMIENTO HACIA ARRIBA");
         }
-      
-            if (C_Vieja + Num == C_Nueva || C_Vieja - Num == C_Nueva
-                    && (C_Nueva <= 7 && C_Nueva >= 0) && (F_Nueva <= 7 && F_Nueva >= 0)) {
-                if (((Piezas) Tablero[F_Vieja + 1][C_Vieja + 1]).getId_Jugador() == idOponente) {
-                    Mover = true;
-                    System.out.println("PIEZA COMIDA!");
+        if (C_Vieja + Num == C_Nueva || C_Vieja - Num == C_Nueva) {
+            if (Num < 0) {//Movimiento hacia abajo
+                if (C_Nueva < C_Vieja) {//Movimeinto hacia la izquierda
+                    System.out.println("MOVIMIENTO A LA IZQ."+F_Nueva+"<"+F_Vieja);
+                    while (Cont <= (Num * -1)) {
+                        if (F_Vieja - Cont >= 0 && C_Vieja - Cont >= 0) {
+                            if (Tablero[F_Vieja - Cont][C_Vieja - Cont] instanceof Piezas) {
+                                if (((Piezas) Tablero[F_Vieja - Cont][C_Vieja - Cont]).getId_Jugador() == idActual) {
+                                     System.out.println("Recorriendo la posicion" +(F_Vieja - Cont) + "-" + (C_Vieja - Cont));
+                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                                    return false;
+                                } else {//La Pieza es ajena.
+                                    if (F_Vieja - Cont > F_Nueva) {
+                                        System.out.println("No puedes saltar piezas, la casilla coresponde a una pieza ajena.");
+                                        System.out.println("");
+                                        return false;
+                                    } else {
+                                        System.out.println("EL ALFIL SE HA COMIDO UNA PIEZA!");
+                                        return true;
+                                    }
+                                }
+                            } else {
+                                System.out.println("Espacio Vacio es" + (F_Vieja-Cont) + "-" + (C_Vieja - Cont));
+                            }
+                            Cont++;
+                        }//Fin del if que decide si estamos o no dentro del tablero.
+                    }
+                    System.out.println("LLEGO HASTA AQUI, HAY CAMINO LIBRE");
+                    return true;/*SI LLEGO A ESTE PUNTO NO ENCONTRO NINGUNA PIEZA EN EL CAMINO*/
+                } else {//Movimeinto hacia la derecha
+                     System.out.println("MOVIMIENTO A LA IZQ."+F_Nueva+">"+F_Vieja);
+                    while (Cont <= (Num * -1)) {
+                        if (F_Vieja - Cont >= 0 && C_Vieja + Cont <= 7) {
+                            if (Tablero[F_Vieja - Cont][C_Vieja + Cont] instanceof Piezas) {
+                                if (((Piezas) Tablero[F_Vieja - Cont][C_Vieja + Cont]).getId_Jugador() == idActual) {
+                                     System.out.println("Recorriendo la posicion" +(F_Vieja - Cont) + "-" + (C_Vieja + Cont));
+                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                                    return false;
+                                } else {//La Pieza es ajena.
+                                    if (F_Vieja - Cont > F_Nueva) {
+                                        System.out.println("No puedes saltar piezas, la casilla coresponde a una pieza ajena.");
+                                        System.out.println("");
+                                        return false;
+                                    } else {
+                                        System.out.println("EL ALFIL SE HA COMIDO UNA PIEZA!");
+                                        return true;
+                                    }
+                                }
+                            } else {
+                                System.out.println("Espacio Vacio es" + (F_Vieja-Cont) + "-" + (C_Vieja - Cont));
+                            }
+                            Cont++;
+                        }//Fin del if que decide si estamos o no dentro del tablero.
+                    }
+                    System.out.println("LLEGO HASTA AQUI, HAY CAMINO LIBRE");
+                    return true;/*SI LLEGO A ESTE PUNTO NO ENCONTRO NINGUNA PIEZA EN EL CAMINO*/
                 }
-            }
-       
+                /*FIN DEL IF DE IZQ Y DERECHA*/
+            } else {//Movimiento hacia arriba.
+                if (C_Nueva < C_Vieja) {//Movimeinto hacia la izquierda
+                     System.out.println("MOVIMIENTO A LA IZQ."+F_Nueva+"<"+F_Vieja);
+                    while (Cont <= Num) {
+                        if (F_Vieja + Cont <= 7 && C_Vieja - Cont >= 0) {
+                            if (Tablero[F_Vieja + Cont][C_Vieja - Cont] instanceof Piezas) {
+                                if (((Piezas) Tablero[F_Vieja + Cont][C_Vieja - Cont]).getId_Jugador() == idActual) {
+                                     System.out.println("Recorriendo la posicion" +(F_Vieja + Cont) + "-" + (C_Vieja - Cont));
+                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                                    return false;
+                                } else {//La Pieza es ajena.
+                                    if (F_Vieja + Cont < F_Nueva) {
+                                        System.out.println("No puedes saltar piezas, la casilla coresponde a una pieza ajena.");
+                                        System.out.println("");
+                                        return false;
+                                    } else {
+                                        System.out.println("EL ALFIL SE HA COMIDO UNA PIEZA!");
+                                        return true;
+                                    }
+                                }
+                            } else {
+                                System.out.println("Espacio Vacio es" +(F_Vieja + Cont) + "-" + (C_Vieja - Cont));
+                            }
+                            Cont++;
+                        }//Fin del if que decide si estamos o no dentro del tablero.
+                    }
+                    System.out.println("LLEGO HASTA AQUI, HAY CAMINO LIBRE");
+                    return true;/*SI LLEGO A ESTE PUNTO NO ENCONTRO NINGUNA PIEZA EN EL CAMINO*/
+                } else {//MOVIMIENTO HACIA LA DERECHA.
+                    while (Cont <= Num) {
+                         System.out.println("MOVIMIENTO A LA IZQ."+F_Nueva+">"+F_Vieja);
+                        if (F_Vieja + Cont <= 7 && C_Vieja + Cont <= 7) {
+                            if (Tablero[F_Vieja + Cont][C_Vieja + Cont] instanceof Piezas) {
+                                if (((Piezas) Tablero[F_Vieja + Cont][C_Vieja + Cont]).getId_Jugador() == idActual) {
+                                     System.out.println("Recorriendo la posicion" +(F_Vieja + Cont) + "-" + (C_Vieja + Cont));
+                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                                    return false;
+                                } else {//La Pieza es ajena.
+                                    if (F_Vieja + Cont < F_Nueva) {
+                                        System.out.println("No puedes saltar piezas, la casilla coresponde a una pieza ajena.");
+                                        System.out.println("");
+                                        return false;
+                                    } else {
+                                        System.out.println("EL ALFIL SE HA COMIDO UNA PIEZA!");
+                                        return true;
+                                    }
+                                }
+                            } else {
+                                System.out.println("Espacio Vacio es" + F_Vieja+Cont + "-" + (C_Vieja - Cont));
+                            }
+                            Cont++;
+                        }//Fin del if que decide si estamos o no dentro del tablero.
+                    }
+                    System.out.println("LLEGO HASTA AQUI, HAY CAMINO LIBRE");
+                    return true;
+
+                }
+            }//FIN DEL IF QUE DETERMINA LA ORIENTACION DEL MOVIMIENTO.
+        }
         return Mover;
-    }
-    
-    /**
-     * METODOS DE PRUEBA/ /*public static void imprimeMatriz(Object matriz[][],
-     * int filas, int cols) { if (filas == matriz.length - 1 && cols ==
-     * matriz[0].length - 1) { System.out.print( matriz[filas][cols] +" "); }
-     * else { if (cols == matriz[0].length-1) { System.out.println(
-     * matriz[filas][cols] ); imprimeMatriz(matriz, filas+1, 0); } else {
-     * System.out.print( matriz[filas][cols] +" "); imprimeMatriz(matriz, filas,
-     * cols+1); } } }
-     */
-}
+    }//Fin del metodo.
 
+}//Fin de la clase.
 
- /**
-  ***
-         *****
-         ***
-         *
-*/
+/**
+ * METODOS DE PRUEBA/ /*public static void imprimeMatriz(Object matriz[][], int
+ * filas, int cols) { if (filas == matriz.length - 1 && cols == matriz[0].length
+ * - 1) { System.out.print( matriz[filas][cols] +" "); } else { if (cols ==
+ * matriz[0].length-1) { System.out.println( matriz[filas][cols] );
+ * imprimeMatriz(matriz, filas+1, 0); } else { System.out.print(
+ * matriz[filas][cols] +" "); imprimeMatriz(matriz, filas, cols+1); } } }
+ */
+//    public static boolean MovimientoAlfil(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
+//        boolean Mover = false;
+//
+//        int Num = 0;
+//        Num = F_Nueva - F_Vieja;
+//        //System.out.println("Numero de Casillas que subira o Bajara"+Num);
+//        if (F_Nueva < 0) {
+//            System.out.println("MOVIMIENTO HACIA ABAJO.");
+//        } else {
+//            System.out.println("MOVIMIENTO HACIA ARRIBA");
+//        }
+//        if (C_Vieja + Num == C_Nueva || C_Vieja - Num == C_Nueva) {
+//            Mover = true;
+//        }else{
+//            return false;
+//        }
+//        if (AlfilComer(F_Vieja, C_Vieja, F_Nueva, C_Nueva)&&Mover) {
+//           Mover=true;
+//        }
+//        //System.out.println("Numero de Casillas que subira o Bajara");
+//        return Mover;
+//    }
+
+/*RECUERDA CAMBIAR EL BOOLEANO DE NUEVO A FALSO.Clase del Alfin*/
+ /* public static boolean MovimientoAlfil(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva) {
+        boolean Mover = false;
+        
+        int Num=0;
+           Num = F_Nueva - F_Vieja;
+        if (F_Nueva < 0) {
+            System.out.println("MOVIMIENTO HACIA ABAJO.");
+        } else {
+            System.out.println("MOVIMIENTO HACIA ARRIBA");
+        }
+        if (F_Vieja+Num==C_Nueva) {
+            return true;    
+        }
+        return Mover;
+    }*/
