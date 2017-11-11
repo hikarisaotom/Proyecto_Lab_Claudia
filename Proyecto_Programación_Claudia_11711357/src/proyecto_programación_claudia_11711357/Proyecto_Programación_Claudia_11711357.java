@@ -279,6 +279,7 @@ public class Proyecto_Programación_Claudia_11711357 {
             Arreglo = ValidarMovimiento(Posicion);
             FilaVieja = Arreglo[0];//fILAS
             ColumnaVieja = Arreglo[1];//Columnas
+            
            
             if (ValidarNum(FilaVieja) || ValidarNum(ColumnaVieja)) {
                 System.out.println("\033[31mERROR EN LOS NUMEROS\033[30m");
@@ -290,7 +291,12 @@ public class Proyecto_Programación_Claudia_11711357 {
             }
             if (ValidarPiezasPropias(Turno, ((Piezas) Tablero[FilaVieja][ColumnaVieja]))) {
                 System.out.println("\033[31m NO PUEDES MOVER PIEZAS AJENAS\033[30m");
-            } else {
+                continue;
+            } 
+            int Id=((Piezas)Tablero[FilaVieja][ColumnaVieja]).getId_Jugador();
+            if (!((Piezas)Tablero[FilaVieja][ColumnaVieja]).Restriccion(FilaVieja,ColumnaVieja,Tablero,Id)) {
+                 System.out.println("\033[31m LA PIEZA ESTA BLOQUEADA, SELECCIONE OTRA O ANALICE MEJOR LA JUGADA\033[30m");
+            }else {
                 Bandera = false;
             }
         }

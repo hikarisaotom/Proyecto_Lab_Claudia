@@ -17,7 +17,7 @@ public class Reina extends Piezas{
                 super.Nombre="Reina";
     }
      @Override
-    public boolean Restriccion(int F_Vieja,int C_Vieja,Object Matriz[]) {
+    public boolean Restriccion(int F_Vieja,int C_Vieja,Object Matriz[][], int id) {
         boolean Acceso=false;
         return Acceso;
     }

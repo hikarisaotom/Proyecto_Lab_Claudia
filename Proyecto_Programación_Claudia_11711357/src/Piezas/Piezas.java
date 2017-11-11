@@ -16,7 +16,7 @@ public abstract class Piezas {
     protected int Id_Jugador;
     protected int Color;
 
-    public abstract boolean Restriccion(int F_Vieja,int C_Vieja,Object Matriz[]);
+    public abstract boolean Restriccion(int F_Vieja,int C_Vieja,Object Matriz[][],int id);
     public int getColor() {
         return Color;
     }

@@ -9,15 +9,53 @@ package Piezas;
  *
  * @author Claudia Cortes
  */
-public class Torre extends Piezas{
+public class Torre extends Piezas {
+
     public Torre() {
-    super();
-          super.simbolo="♖";
-                super.Nombre="Torre";
+        super();
+        super.simbolo = "♖";
+        super.Nombre = "Torre";
     }
-     @Override
-    public boolean Restriccion(int F_Vieja,int C_Vieja,Object Matriz[]) {
-        boolean Acceso=false;
+
+    @Override
+    public boolean Restriccion(int F_Vieja, int C_Vieja, Object Matriz[][], int id) {
+        boolean Acceso = false;
+        if (F_Vieja == 0) {
+            if (C_Vieja == 0) {
+                if (Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas) {
+                    Acceso = false;
+                } else {
+                    Acceso = true;
+                }
+            } else if (C_Vieja == 7) {
+                if (Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas) {
+                    Acceso = false;
+                } else {
+                    Acceso = true;
+                }
+            }//Fin del if de las filas
+        } else if (F_Vieja == 7) {
+            if (C_Vieja == 0) {
+                if (Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas) {
+                    Acceso = false;
+                } else {
+                    Acceso = true;
+                }
+            } else if (C_Vieja == 7) {
+                if (Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas) {
+                    Acceso = false;
+                } else {
+                    Acceso = true;
+                }
+            }//Fin del if de las filas
+        } else {
+            if (Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas
+                    && Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas) {
+                Acceso = false;
+            } else {
+                Acceso = true;
+            }
+        }
         return Acceso;
-    }
+    }//Fin dle metodo.
 }
