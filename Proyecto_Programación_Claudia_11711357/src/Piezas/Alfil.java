@@ -16,5 +16,11 @@ public class Alfil extends Piezas{
         super.simbolo="♗";
         super.Nombre="Alfil";
     }
+
+    @Override
+    public boolean Restriccion(int F_Vieja,int C_Vieja,Object Matriz[]) {
+        boolean Acceso=false;
+        return Acceso;
+    }
     
 }

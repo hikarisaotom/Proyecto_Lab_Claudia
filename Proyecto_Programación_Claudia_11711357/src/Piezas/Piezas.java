@@ -9,13 +9,14 @@ package Piezas;
  *
  * @author Claudia Cortes
  */
-public class Piezas {
+public abstract class Piezas {
     protected String Nombre;
     protected String Posicion;
     protected int Puntos;
     protected int Id_Jugador;
     protected int Color;
 
+    public abstract boolean Restriccion(int F_Vieja,int C_Vieja,Object Matriz[]);
     public int getColor() {
         return Color;
     }

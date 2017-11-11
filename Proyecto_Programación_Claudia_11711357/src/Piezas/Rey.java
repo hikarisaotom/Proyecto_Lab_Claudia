@@ -17,5 +17,9 @@ public class Rey extends Piezas{
           super.simbolo="♔";
                 super.Nombre="Rey";
     }
-    
+     @Override
+    public boolean Restriccion(int F_Vieja,int C_Vieja,Object Matriz[]) {
+        boolean Acceso=false;
+        return Acceso;
+    }
 }

@@ -14,4 +14,10 @@ YA ESTAN EL PEON Y LA TORRE,Y EL CABALLO.
 
 FALTA EL REY, LA REINA,erroe en la izquierda hacia arriba 
 
-derecha hacia rriba funciona el bloqueo.
+derecha hacia arriba funciona el bloqueo.
+A5
+5A
+AA
+
+VALIDAR QUE NO SE MUEVA SI ESTA RODEADO.
+VALIDAR COMO COME EL CABALLO.
