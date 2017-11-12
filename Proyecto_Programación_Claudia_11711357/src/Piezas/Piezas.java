@@ -10,13 +10,17 @@ package Piezas;
  * @author Claudia Cortes
  */
 public abstract class Piezas {
+
     protected String Nombre;
     protected String Posicion;
     protected int Puntos;
     protected int Id_Jugador;
     protected int Color;
 
-    public abstract boolean Restriccion(int F_Vieja,int C_Vieja,Object Matriz[][],int id);
+    public abstract boolean Restriccion(int F_Vieja, int C_Vieja, Object Matriz[][], int id);
+
+    public abstract boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1, Object [][]Tablero);
+
     public int getColor() {
         return Color;
     }
@@ -33,6 +37,7 @@ public abstract class Piezas {
     public void setSimbolo(String simbolo) {
         this.simbolo = simbolo;
     }
+
     public Piezas() {
     }
 
@@ -72,6 +77,5 @@ public abstract class Piezas {
     public void setId_Jugador(int Id_Jugador) {
         this.Id_Jugador = Id_Jugador;
     }
-    
-    
+
 }
