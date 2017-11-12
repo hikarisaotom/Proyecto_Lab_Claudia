@@ -19,6 +19,33 @@ public class Reina extends Piezas{
      @Override
     public boolean Restriccion(int F_Vieja,int C_Vieja,Object Matriz[][], int id) {
         boolean Acceso=false;
+         if (F_Vieja==0) {
+             if (Matriz[F_Vieja+1][C_Vieja] instanceof Piezas&&Matriz[F_Vieja][C_Vieja+1] instanceof Piezas&&Matriz[F_Vieja][C_Vieja-1] instanceof Piezas&&
+                     Matriz[F_Vieja+1][C_Vieja+1] instanceof Piezas&&Matriz[F_Vieja+1][C_Vieja-1] instanceof Piezas) {
+                 Acceso=false;
+             }else{
+                 Acceso=true;
+             }
+         }else if (F_Vieja==7){
+             if (Matriz[F_Vieja-1][C_Vieja] instanceof Piezas&&Matriz[F_Vieja][C_Vieja+1] instanceof Piezas&&Matriz[F_Vieja][C_Vieja-1] instanceof Piezas&&
+                     Matriz[F_Vieja-1][C_Vieja+1] instanceof Piezas&&Matriz[F_Vieja-1][C_Vieja-1] instanceof Piezas) {
+                 Acceso=false;
+             }else{
+                 Acceso=true;
+             }
+         }else{//Esta en cualquier fila.
+              if (Matriz[F_Vieja+1][C_Vieja] instanceof Piezas&&Matriz[F_Vieja-1][C_Vieja] instanceof Piezas&&//Arriab abajo
+                      Matriz[F_Vieja][C_Vieja+1] instanceof Piezas&&Matriz[F_Vieja][C_Vieja-1] instanceof Piezas&&//Los lados
+                 Matriz[F_Vieja-1][C_Vieja+1] instanceof Piezas&&Matriz[F_Vieja-1][C_Vieja-1] instanceof Piezas&&//Diagonales abajo
+                 Matriz[F_Vieja+1][C_Vieja+1] instanceof Piezas&&Matriz[F_Vieja+1][C_Vieja-1] instanceof Piezas) {//Diagonales arriba
+                 Acceso=false;
+             }else{
+                 Acceso=true;
+             }
+         }
         return Acceso;
     }
 }
+/*
+       
+*/

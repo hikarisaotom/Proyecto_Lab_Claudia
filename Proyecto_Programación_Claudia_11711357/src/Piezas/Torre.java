@@ -49,8 +49,8 @@ public class Torre extends Piezas {
                 }
             }//Fin del if de las filas
         } else {
-            if (Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas
-                    && Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas) {
+            if (Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas//Movimientos hacia los lados.
+                    && Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas) {//Movimientos hacia arriba y abajo
                 Acceso = false;
             } else {
                 Acceso = true;
