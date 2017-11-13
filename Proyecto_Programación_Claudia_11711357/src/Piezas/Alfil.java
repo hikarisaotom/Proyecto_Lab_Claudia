@@ -66,18 +66,21 @@ public boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, in
         if (C_Vieja + Num == C_Nueva || C_Vieja - Num == C_Nueva) {
             if (Num < 0) {//Movimiento hacia abajo
                 if (C_Nueva < C_Vieja) {//Movimeinto hacia la izquierda
-                    System.out.println("MOVIMIENTO A LA IZQ." + F_Nueva + "<" + F_Vieja);
+                   // System.out.println("MOVIMIENTO A LA IZQ." + F_Nueva + "<" + F_Vieja);
                     while (Cont <= (Num * -1)) {
                         if (F_Vieja - Cont >= 0 && C_Vieja - Cont >= 0) {
                             if (Tablero[F_Vieja - Cont][C_Vieja - Cont] instanceof Piezas) {
                                 if (((Piezas) Tablero[F_Vieja - Cont][C_Vieja - Cont]).getId_Jugador() == idActual) {
-                                    System.out.println("Recorriendo la posicion" + (F_Vieja - Cont) + "-" + (C_Vieja - Cont));
-                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                                   // System.out.println("Recorriendo la posicion" + (F_Vieja - Cont) + "-" + (C_Vieja - Cont));
+                                    if (Num1!=1) {
+                                     System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");   
+                                    }
                                     return false;
                                 } else {//La Pieza es ajena.
                                     if (F_Vieja - Cont > F_Nueva) {
-                                        System.out.println("No puedes saltar piezas, la casilla coresponde a una pieza ajena.");
-                                        System.out.println("");
+                                        if (Num1 != 1) {
+                                            System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla ajena.");
+                                        }
                                         return false;
                                     } else {
                                         if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
@@ -109,11 +112,15 @@ public boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, in
                             if (Tablero[F_Vieja - Cont][C_Vieja + Cont] instanceof Piezas) {
                                 if (((Piezas) Tablero[F_Vieja - Cont][C_Vieja + Cont]).getId_Jugador() == idActual) {
                                     //System.out.println("Recorriendo la posicion" + (F_Vieja - Cont) + "-" + (C_Vieja + Cont));
-                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                                   if (Num1!=1) {
+                                     System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");   
+                                    }
                                     return false;
                                 } else {//La Pieza es ajena.
                                     if (F_Vieja - Cont > F_Nueva) {
-                                        System.out.println("No puedes saltar piezas, la casilla coresponde a una pieza ajena.");
+                                        if (Num1!=1) {
+                                     System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla ajena.");   
+                                    }
                                         System.out.println("");
                                         return false;
                                     } else {
@@ -149,11 +156,15 @@ public boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, in
                             if (Tablero[F_Vieja + Cont][C_Vieja - Cont] instanceof Piezas) {
                                 if (((Piezas) Tablero[F_Vieja + Cont][C_Vieja - Cont]).getId_Jugador() == idActual) {
                                     // System.out.println("Recorriendo la posicion" + (F_Vieja + Cont) + "-" + (C_Vieja - Cont));
-                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                                    if (Num1!=1) {
+                                     System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");   
+                                    }
                                     return false;
                                 } else {//La Pieza es ajena.
                                     if (F_Vieja + Cont < F_Nueva) {
-                                        System.out.println("No puedes saltar piezas, la casilla coresponde a una pieza ajena.");
+                                       if (Num1!=1) {
+                                     System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla ajena.");   
+                                    }
                                         System.out.println("");
                                         return false;
                                     } else {
@@ -186,11 +197,15 @@ public boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, in
                             if (Tablero[F_Vieja + Cont][C_Vieja + Cont] instanceof Piezas) {
                                 if (((Piezas) Tablero[F_Vieja + Cont][C_Vieja + Cont]).getId_Jugador() == idActual) {
                                     //System.out.println("Recorriendo la posicion" + (F_Vieja + Cont) + "-" + (C_Vieja + Cont));
-                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                                    if (Num1!=1) {
+                                     System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");   
+                                    }
                                     return false;
                                 } else {//La Pieza es ajena.
                                     if (F_Vieja + Cont < F_Nueva) {
-                                        System.out.println("No puedes saltar piezas, la casilla coresponde a una pieza ajena.");
+                                         if (Num1!=1) {
+                                     System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla ajena.");   
+                                    }
                                         System.out.println("");
                                         return false;
                                     } else {

@@ -14,8 +14,15 @@ public class Proyecto_Programación_Claudia_11711357 {
     public static boolean Ganador = false;
     public static int Turno = 0;
     public static int JUGADORGANADOR = 0;
+    /*POSICIONES GENERALES DE LOS REYES*/
     public static int F_Rey=0;
      public static int C_Rey=3;
+      public static int F_Rey1=0;
+     public static int C_Rey1=3;
+     
+      public static int F_Rey2=7;
+     public static int C_Rey2=3;
+     
     public static void main(String[] args) {
 
         System.out.println("Ingrese el Nombre del Jugador 1");
@@ -49,13 +56,15 @@ public class Proyecto_Programación_Claudia_11711357 {
             switch (Turno) {
                 case 0:
                     Turno = 1;
-                    F_Rey = 0;
+                   F_Rey=F_Rey1;
+                   C_Rey=F_Rey1;
                     break;
                 case 1:
 //                    Imprimir_Matriz(Tablero, 7, 0);
 //                    CambiarPosicion(Turno);
                     Turno = 0;
-                    F_Rey = 7;
+                   F_Rey=F_Rey2;
+                   C_Rey=F_Rey2;
                     break;
             }
             System.out.println("\n→ NUEVAS POSICIONES ←");
@@ -313,11 +322,17 @@ public class Proyecto_Programación_Claudia_11711357 {
            
             Bandera2 = false;
         }//Fin del while
+          int Id = ((Piezas) Tablero[FilaVieja][ColumnaVieja]).getId_Jugador();
         if (Tablero[FilaVieja][ColumnaVieja] instanceof Rey) {
-            F_Rey = Fila;
-            C_Rey = Columna;
-            System.out.println("LA NUEVA POSICION DEL REY  " + F_Rey + "-" + C_Rey);
+            if (Id == 0) {
+                F_Rey1 = Fila;
+                C_Rey1 = Columna;
+            } else {
+                F_Rey2 = Fila;
+                C_Rey2 = Columna;
+            }
 
+            System.out.println("LA NUEVA POSICION DEL REY  " + F_Rey + "-" + C_Rey);
         }
         Tablero[Fila][Columna] = Tablero[FilaVieja][ColumnaVieja];
         Relleno(FilaVieja,ColumnaVieja);

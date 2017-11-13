@@ -42,8 +42,8 @@ public class Peon extends Piezas {
         return Acceso;
     }
 
-    public boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1, Object [][]Tablero) {
-            boolean Mover = false;
+    public boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1, Object[][] Tablero) {
+        boolean Mover = false;
         int Num = 0;
         int Num2 = 0;
         int idActual = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
@@ -69,14 +69,19 @@ public class Peon extends Piezas {
                 for (int i = 1; i < 3; i++) {
                     if (idActual == 0) {
                         if (Tablero[F_Vieja + i][C_Nueva] instanceof Piezas && idActual == 0) {
-                            System.out.println("EL PEON TIENE EL PASO BLOQUEADO");
+                            if (Num1 != 1) {
+                                System.out.println("EL PEON TIENE EL PASO BLOQUEADO");
+                            }
+
                             return false;
                         }
 
                     } else {
                         //  System.out.println("JUGADOR 2");
                         if (Tablero[F_Vieja - i][C_Nueva] instanceof Piezas && idActual == 0) {
-                            System.out.println("EL PEON TIENE EL PASO BLOQUEADO");
+                            if (Num1 != 1) {
+                                System.out.println("EL PEON TIENE EL PASO BLOQUEADO");
+                            }
                             return false;
                         }
                     }
@@ -89,7 +94,9 @@ public class Peon extends Piezas {
         } else {//En caso de que no sea su primer movimiento.
 
             if (Tablero[F_Nueva][C_Nueva] instanceof Piezas) {
-                System.out.println("EL PEON TIENE EL PASO BLOQUEADO");
+                if (Num1 != 1) {
+                    System.out.println("EL PEON TIENE EL PASO BLOQUEADO");
+                }
             } else if (F_Vieja + Num2 == F_Nueva && C_Vieja == C_Nueva && Tablero[F_Nueva][C_Nueva] instanceof String) {
                 return true;
             }
@@ -97,7 +104,8 @@ public class Peon extends Piezas {
         }
         return Mover;
     }
-     public static boolean PeonComer(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1) {
+
+    public static boolean PeonComer(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1) {
         boolean Mover = false;
         int idActual = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
         int idOponente;

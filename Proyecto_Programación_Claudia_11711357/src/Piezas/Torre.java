@@ -63,8 +63,8 @@ public class Torre extends Piezas {
         return Acceso;
     }//Fin dle metodo.
 
-    public boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1, Object [][]Tablero) {
-       boolean Mover = false;
+    public boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1, Object[][] Tablero) {
+        boolean Mover = false;
         int Dif_C = C_Nueva - C_Vieja;
         /*Valor - es a la izq y pos a la derecha */
         int Dif_F = F_Nueva - F_Vieja;
@@ -81,11 +81,17 @@ public class Torre extends Piezas {
                 while (Cont <= (Dif_C * -1)) {
                     if (Tablero[F_Vieja][C_Vieja - Cont] instanceof Piezas) {
                         if (((Piezas) Tablero[F_Vieja][C_Vieja - Cont]).getId_Jugador() == idActual) {
-                            System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                            if (Num1 != 1) {
+                                System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+
+                            }
                             return false;
                         } else {//La Pieza es ajena.
                             if (C_Vieja - Cont > C_Nueva) {
-                                System.out.println("No puedes saltar piezas, la casilla corresponde a una pieza ajena.");
+                                if (Num1 != 1) {
+                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla ajena.");
+
+                                }
                                 System.out.println("");
                                 return false;
                             } else {
@@ -114,11 +120,17 @@ public class Torre extends Piezas {
                 while (Cont <= Dif_C) {
                     if (Tablero[F_Vieja][C_Vieja + Cont] instanceof Piezas) {
                         if (((Piezas) Tablero[F_Vieja][C_Vieja + Cont]).getId_Jugador() == idActual) {
-                            System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                            if (Num1 != 1) {
+                                System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+
+                            }
                             return false;
                         } else {//La Pieza es ajena.
                             if (C_Vieja + Cont < C_Nueva) {
-                                System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                                if (Num1 != 1) {
+                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla ajena.");
+
+                                }
                                 System.out.println("");
                                 return false;
                             } else {
@@ -149,11 +161,17 @@ public class Torre extends Piezas {
                 while (Cont <= (Dif_F * -1)) {
                     if (Tablero[F_Vieja - Cont][C_Vieja] instanceof Piezas) {
                         if (((Piezas) Tablero[F_Vieja - Cont][C_Vieja]).getId_Jugador() == idActual) {
-                            System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                            if (Num1 != 1) {
+                                System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+
+                            }
                             return false;
                         } else {//La Pieza es ajena.
                             if (F_Vieja - Cont > F_Nueva) {
-                                System.out.println("No puedes saltar piezas, la casilla coresponde a una pieza ajena.");
+                                if (Num1 != 1) {
+                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla ajena.");
+
+                                }
                                 System.out.println("");
                                 return false;
                             } else {
@@ -182,11 +200,17 @@ public class Torre extends Piezas {
                 while (Cont <= Dif_F) {
                     if (Tablero[F_Vieja + Cont][C_Vieja] instanceof Piezas) {
                         if (((Piezas) Tablero[F_Vieja + Cont][C_Vieja]).getId_Jugador() == idActual) {
-                            System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                            if (Num1 != 1) {
+                                System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+
+                            }
                             return false;
                         } else {//La Pieza es ajena.
                             if (F_Vieja + Cont < F_Nueva) {
-                                System.out.println("No puedes saltar piezas, la casilla coresponde a una pieza ajena.");
+                                if (Num1 != 1) {
+                                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla ajena.");
+
+                                }
                                 System.out.println("");
                                 return false;
                             } else {

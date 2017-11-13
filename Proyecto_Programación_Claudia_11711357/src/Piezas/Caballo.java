@@ -46,7 +46,9 @@ public class Caballo extends Piezas {
         }
         if (Mover && Tablero[F_Nueva][C_Nueva] instanceof Piezas) {
             if (((Piezas) Tablero[F_Nueva][C_Nueva]).getId_Jugador() == ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador()) {
-                System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                if (Num1 != 1) {
+                    System.out.println("No puedes saltar piezas, la casilla coresponde a una casilla propia.");
+                }
                 return false;
             } else {
                 if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
