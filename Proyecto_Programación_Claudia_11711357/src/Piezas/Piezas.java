@@ -19,7 +19,7 @@ public abstract class Piezas {
 
     public abstract boolean Restriccion(int F_Vieja, int C_Vieja, Object Matriz[][], int id);
 
-    public abstract boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1, Object [][]Tablero);
+    public abstract boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1, Object[][] Tablero);
 
     public int getColor() {
         return Color;

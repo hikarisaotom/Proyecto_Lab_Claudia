@@ -46,8 +46,8 @@ public class Rey extends Piezas {
         return Acceso;
     }
 
-    public boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1, Object [][]Tablero) {
-          boolean Mover = false;
+    public boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1, Object[][] Tablero) {
+        boolean Mover = false;
         if (F_Vieja + 1 == F_Nueva || F_Vieja - 1 == F_Nueva) {
             if (C_Vieja + 1 == C_Nueva || C_Vieja - 1 == C_Nueva || C_Vieja == C_Nueva) {
                 Mover = true;

@@ -7,6 +7,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class Proyecto_Programación_Claudia_11711357 {
+
     public static ArrayList<Jugador> Jugadores = new ArrayList();
     public static Object[][] Tablero;
     public static Object[][] Tab;
@@ -15,14 +16,14 @@ public class Proyecto_Programación_Claudia_11711357 {
     public static int Turno = 0;
     public static int JUGADORGANADOR = 0;
     /*POSICIONES GENERALES DE LOS REYES*/
-    public static int F_Rey=0;
-     public static int C_Rey=3;
-      public static int F_Rey1=0;
-     public static int C_Rey1=3;
-     
-      public static int F_Rey2=7;
-     public static int C_Rey2=3;
-     
+    public static int F_Rey = 0;
+    public static int C_Rey = 3;
+    public static int F_Rey1 = 0;
+    public static int C_Rey1 = 3;
+
+    public static int F_Rey2 = 7;
+    public static int C_Rey2 = 3;
+
     public static void main(String[] args) {
 
         System.out.println("Ingrese el Nombre del Jugador 1");
@@ -47,24 +48,24 @@ public class Proyecto_Programación_Claudia_11711357 {
                 System.out.println("Felicidades " + Jugadores.get(JUGADORGANADOR).getNombre() + " ha ganado!");
             }
             System.out.println("LA NUEVA POSICION DEL REY  DEL OPONENTE" + F_Rey + "-" + C_Rey);
-            
+
             System.out.println("Turno de:" + Jugadores.get(Turno).getNombre());
             Imprimir_Matriz(Tablero, 7, 0);
-             System.out.println("\n---------------------------------------------");
+            System.out.println("\n---------------------------------------------");
             CambiarPosicion(Turno);
-           
+
             switch (Turno) {
                 case 0:
                     Turno = 1;
-                   F_Rey=F_Rey1;
-                   C_Rey=F_Rey1;
+                    F_Rey = F_Rey1;
+                    C_Rey = C_Rey1;
                     break;
                 case 1:
 //                    Imprimir_Matriz(Tablero, 7, 0);
 //                    CambiarPosicion(Turno);
                     Turno = 0;
-                   F_Rey=F_Rey2;
-                   C_Rey=F_Rey2;
+                    F_Rey = F_Rey2;
+                    C_Rey = C_Rey2;
                     break;
             }
             System.out.println("\n→ NUEVAS POSICIONES ←");
@@ -298,7 +299,7 @@ public class Proyecto_Programación_Claudia_11711357 {
             }
             int Id = ((Piezas) Tablero[FilaVieja][ColumnaVieja]).getId_Jugador();
             if (!((Piezas) Tablero[FilaVieja][ColumnaVieja]).Restriccion(FilaVieja, ColumnaVieja, Tablero, Id)) {
-                System.out.println("\033[31m LA PIEZA: "+((Piezas)Tablero[FilaVieja][ColumnaVieja]).getNombre().toUpperCase()+" ESTA BLOQUEADA, SELECCIONE OTRA O ANALICE MEJOR LA JUGADA\033[30m");
+                System.out.println("\033[31m LA PIEZA: " + ((Piezas) Tablero[FilaVieja][ColumnaVieja]).getNombre().toUpperCase() + " ESTA BLOQUEADA, SELECCIONE OTRA O ANALICE MEJOR LA JUGADA\033[30m");
             } else {
                 Bandera = false;
             }
@@ -315,14 +316,14 @@ public class Proyecto_Programación_Claudia_11711357 {
                 System.out.println("\033[31mERROR EN LOS NUMEROS\033[30m");
                 continue;
             }
-            if (!((Piezas)Tablero[FilaVieja][ColumnaVieja]).Movimiento(FilaVieja, ColumnaVieja, Fila, Columna,0,Tablero)) {
-                    System.out.println("\033[31m MOVIMIENTO INVALIDO PARA LA PIEZA: "+((Piezas)Tablero[FilaVieja][ColumnaVieja]).getNombre().toUpperCase()+"\033[30m");
-                   continue;
+            if (!((Piezas) Tablero[FilaVieja][ColumnaVieja]).Movimiento(FilaVieja, ColumnaVieja, Fila, Columna, 0, Tablero)) {
+                System.out.println("\033[31m MOVIMIENTO INVALIDO PARA LA PIEZA: " + ((Piezas) Tablero[FilaVieja][ColumnaVieja]).getNombre().toUpperCase() + "\033[30m");
+                continue;
             }
-           
+
             Bandera2 = false;
         }//Fin del while
-          int Id = ((Piezas) Tablero[FilaVieja][ColumnaVieja]).getId_Jugador();
+        int Id = ((Piezas) Tablero[FilaVieja][ColumnaVieja]).getId_Jugador();
         if (Tablero[FilaVieja][ColumnaVieja] instanceof Rey) {
             if (Id == 0) {
                 F_Rey1 = Fila;
@@ -335,9 +336,10 @@ public class Proyecto_Programación_Claudia_11711357 {
             System.out.println("LA NUEVA POSICION DEL REY  " + F_Rey + "-" + C_Rey);
         }
         Tablero[Fila][Columna] = Tablero[FilaVieja][ColumnaVieja];
-        Relleno(FilaVieja,ColumnaVieja);
-         ((Piezas)Tablero[Fila][Columna]).Movimiento(Fila,Columna,F_Rey, C_Rey,1,Tablero);
+        Relleno(FilaVieja, ColumnaVieja);
+        ((Piezas) Tablero[Fila][Columna]).Movimiento(Fila, Columna, F_Rey, C_Rey, 1, Tablero);
     }
+
     public static void Relleno(int FilaVieja, int ColumnaVieja) {
         if (FilaVieja % 2 == 0) {//La Fila es Par
             if (ColumnaVieja % 2 == 0) {//Columna Par (Blanco)
@@ -878,7 +880,6 @@ public class Proyecto_Programación_Claudia_11711357 {
 //        }
 //        return Mover;
 //    }//Fin del metodo.
-
 }//Fin de la clase.
 
 /*
@@ -949,7 +950,7 @@ public class Proyecto_Programación_Claudia_11711357 {
             Columna = SC.nextInt();*/
 // System.out.println("La posicion"+Posicion+"Se traduce como: "+FilaVieja+"-"+ColumnaVieja);
 
-            /*System.out.println("Ingrese la Fila de la pieza que desea mover.");
+/*System.out.println("Ingrese la Fila de la pieza que desea mover.");
             FilaVieja = SC.nextInt();
             System.out.println("Ingrese la Columnade la pieza que desea mover.");
             ColumnaVieja = SC.nextInt();*/
