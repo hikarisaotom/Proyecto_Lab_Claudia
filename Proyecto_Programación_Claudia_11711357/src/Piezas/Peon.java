@@ -63,6 +63,9 @@ public class Peon extends Piezas {
         if (PeonComer(F_Vieja, C_Vieja, F_Nueva, C_Nueva, Num1)) {
             return true;
         }
+        if ((idActual==1&&F_Nueva==F_Vieja-1)||(idActual==0&&F_Nueva==F_Vieja+1)) {
+            return true;
+        }
       //  System.out.println("SALTO EL PEON COMER");
         if (((Piezas) Tablero[F_Vieja][C_Vieja]).getPosicion().equals(F_Vieja + "-" + C_Vieja)) {//En caso de que sea su primer movimiento
             //System.out.println("Puede moverse dos para arriba");
@@ -71,6 +74,7 @@ public class Peon extends Piezas {
                     if (idActual == 0) {
                         if (Tablero[F_Vieja + i][C_Nueva] instanceof Piezas && idActual == 0) {
                             if (Num1 != 1) {
+                                System.out.println("ENTRO A LA EXCEPCION DEL MAIN");
                                 System.out.println("EL PEON TIENE EL PASO BLOQUEADO");
                             }
 
@@ -81,6 +85,7 @@ public class Peon extends Piezas {
                         //  System.out.println("JUGADOR 2");
                         if (Tablero[F_Vieja - i][C_Nueva] instanceof Piezas && idActual == 0) {
                             if (Num1 != 1) {
+                                System.out.println("");
                                 System.out.println("EL PEON TIENE EL PASO BLOQUEADO");
                             }
                             return false;
