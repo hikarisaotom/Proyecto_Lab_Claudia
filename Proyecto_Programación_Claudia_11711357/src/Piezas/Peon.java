@@ -63,6 +63,7 @@ public class Peon extends Piezas {
         if (PeonComer(F_Vieja, C_Vieja, F_Nueva, C_Nueva, Num1)) {
             return true;
         }
+      //  System.out.println("SALTO EL PEON COMER");
         if (((Piezas) Tablero[F_Vieja][C_Vieja]).getPosicion().equals(F_Vieja + "-" + C_Vieja)) {//En caso de que sea su primer movimiento
             //System.out.println("Puede moverse dos para arriba");
             if (F_Vieja + Num == F_Nueva && C_Vieja == C_Nueva || F_Vieja + Num2 == F_Nueva && C_Vieja == C_Nueva) { //Solo puede moverse 2 casillas maximo
@@ -118,9 +119,10 @@ public class Peon extends Piezas {
         int Num = 0;
         Num = F_Nueva - F_Vieja;
         if ((Num == 1 && idActual == 0) || (Num == -1 && idActual == 1)) {
+            //System.out.println("Num"+Num+"Id Atual"+idActual);
             if (C_Vieja + Num == C_Nueva || C_Vieja - Num == C_Nueva
                     && (C_Nueva <= 7 && C_Nueva >= 0) && (F_Nueva <= 7 && F_Nueva >= 0)) {
-                if (((Piezas) Tablero[F_Vieja + 1][C_Vieja + 1]).getId_Jugador() == idOponente) {
+                if (((Piezas) Tablero[F_Vieja + Num][C_Vieja + Num]).getId_Jugador() == idOponente) {
                     if (Num == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
                         System.out.println("JAQUE");
                     } else {
