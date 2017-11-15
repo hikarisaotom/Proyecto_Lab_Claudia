@@ -32,3 +32,6 @@ VALIDAR EN EL ALFIL Y EL PEON QUE CUANDO LA POSICION DE LA DIAGONAL ESTE SOLA O 
 
 
 Error en el movimiento hacia abajo del peon en comida de diagonal.
+Hacer que el rey coma.
+probar el jaque.
+probar moverse en diagonal-

@@ -18,11 +18,13 @@ public class Proyecto_Programación_Claudia_11711357 {
     /*POSICIONES GENERALES DE LOS REYES*/
     public static int F_Rey = 0;
     public static int C_Rey = 3;
-    public static int F_Rey1 = 0;
-    public static int C_Rey1 = 3;
-
-    public static int F_Rey2 = 7;
-    public static int C_Rey2 = 3;
+   public static int F_Rey1 = 0;
+   public static int C_Rey1 = 3;
+ public static int F_Rey2 = 4;
+   public static int C_Rey2 = 2;
+//   
+//    public static int F_Rey2 = 7;
+//    public static int C_Rey2 = 3;
 
     public static void main(String[] args) {
 int  ID =3;
@@ -56,8 +58,10 @@ boolean Bandera=true;
         Tablero = Cargar_Piezas(Tablero);
         Tab = Llenar_Matriz();
         while (true) {
+            System.out.println("Estado del ganador"+Ganador);
             if (Ganador) {
                 System.out.println("Felicidades " + Jugadores.get(JUGADORGANADOR).getNombre() + " ha ganado!");
+                break;
             }
             System.out.println("LA NUEVA POSICION DEL REY  DEL OPONENTE" + F_Rey + "-" + C_Rey);
 
@@ -136,7 +140,8 @@ boolean Bandera=true;
             }
         }
         //System.out.println("JUGADORES:"+Jugadores);
-       //matriz[4][2] = Jugadores.get(Jugador).getPiezas().get(5);
+       matriz[4][2] = Jugadores.get(Jugador).getPiezas().get(3);
+        System.out.println("Pieza"+Jugadores.get(Jugador).getPiezas().get(3).getClass().getSimpleName());
         return matriz;
     }
 
