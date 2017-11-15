@@ -25,12 +25,24 @@ public class Proyecto_Programación_Claudia_11711357 {
     public static int C_Rey2 = 3;
 
     public static void main(String[] args) {
-
+int  ID =3;
+boolean Bandera=true;
         System.out.println("Ingrese el Nombre del Jugador 1");
         String Nombre = SC.next();
-        System.out.println("Seleccione el color con el que desea jugar: \n\n"
-                + "1)\033[32mVerdes.\033[30m \n2)\033[36mCyan.\033[30m");
-        int ID = SC.nextInt();
+        while (Bandera) {
+            try {
+                System.out.println("Seleccione el color con el que desea jugar: \n\n"
+                        + "1)\033[32mVerdes.\033[30m \n2)\033[36mCyan.\033[30m");
+                SC=new Scanner(System.in);
+                ID = SC.nextInt();
+                Bandera = false;
+            } catch (Exception e) {
+                Bandera=true;
+                System.out.println("Se ha Producido un error");
+            }
+        }
+       
+        
         Jugadores.add(new Jugador(Nombre, 0, ID));
         if (ID == 1) {
             ID = 2;
@@ -124,6 +136,7 @@ public class Proyecto_Programación_Claudia_11711357 {
             }
         }
         //System.out.println("JUGADORES:"+Jugadores);
+       //matriz[4][2] = Jugadores.get(Jugador).getPiezas().get(5);
         return matriz;
     }
 
@@ -366,7 +379,8 @@ public class Proyecto_Programación_Claudia_11711357 {
         int Letra = 15;
         ///int [] A= new int(2);
         int[] A = {15, 15};
-        if (Character.isDigit(Posicion.charAt(0)) || Character.isAlphabetic(Posicion.charAt(1)) || Posicion.length() == 1) {
+        try {
+            if (Character.isDigit(Posicion.charAt(0)) || Character.isAlphabetic(Posicion.charAt(1)) || Posicion.length() == 1||Posicion.length() >2) {
             return A;
         }
         //ValidarMovimiento
@@ -398,7 +412,9 @@ public class Proyecto_Programación_Claudia_11711357 {
         }
         A[1] = Letra;//Columnas
         A[0] = Integer.parseInt("" + Posicion.charAt(1));//Filas
-
+        }catch (Exception e){
+            System.out.println("Se ha Producido un error");
+        }
         return A;
     }
 
