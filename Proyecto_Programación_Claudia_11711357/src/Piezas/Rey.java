@@ -30,31 +30,64 @@ public class Rey extends Piezas {
         } else if (F_Vieja == 7) {
             Num = -1;
         }
+        int IdActual=((Piezas)Matriz[F_Vieja][C_Vieja]).getId_Jugador();
         if (F_Vieja == 0 || F_Vieja == 7) {
-            if (Matriz[F_Vieja + Num][C_Vieja] instanceof Piezas && Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas) {
-                Acceso = false;
+            if (Matriz[F_Vieja + Num][C_Vieja] instanceof Piezas
+                    && Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas
+                    && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas) {
+                if (((Piezas) Matriz[F_Vieja + Num][C_Vieja]).getId_Jugador() == IdActual
+                        && ((Piezas) Matriz[F_Vieja][C_Vieja + 1]).getId_Jugador() == IdActual
+                        && ((Piezas) Matriz[F_Vieja][C_Vieja - 1]).getId_Jugador() == IdActual) {
+                    Acceso = false;
+                }
             } else {
                 Acceso = true;
             }
         } else {
-            if (Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas) {
-                Acceso = false;
+            if (Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas
+                    && Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas
+                    && Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas
+                    && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas) {
+                if (((Piezas) Matriz[F_Vieja - 1][C_Vieja]).getId_Jugador() == IdActual
+                        && ((Piezas) Matriz[F_Vieja + 1][C_Vieja]).getId_Jugador() == IdActual
+                        && ((Piezas) Matriz[F_Vieja][C_Vieja + 1]).getId_Jugador() == IdActual
+                        && ((Piezas) Matriz[F_Vieja][C_Vieja - 1]).getId_Jugador() == IdActual) {
+                    Acceso = false;
+                }
             } else {
                 Acceso = true;
             }
         }
+      
         return Acceso;
     }
 
     public boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1, Object[][] Tablero) {
+         int IdActual=((Piezas)Tablero[F_Vieja][C_Vieja]).getId_Jugador();
         boolean Mover = false;
         if (F_Vieja + 1 == F_Nueva || F_Vieja - 1 == F_Nueva) {
             if (C_Vieja + 1 == C_Nueva || C_Vieja - 1 == C_Nueva || C_Vieja == C_Nueva) {
-                Mover = true;
+                if (Tablero[F_Nueva][C_Nueva] instanceof String) {
+                    Mover = true;
+                } else {
+                    if (((Piezas) Tablero[F_Nueva][C_Nueva]).getId_Jugador() == IdActual) {
+                        Mover = false;
+                    } else {
+                        Mover = true;
+                    }
+                }
             }
         } else if (F_Vieja == F_Nueva) {
             if (C_Vieja + 1 == C_Nueva || C_Vieja - 1 == C_Nueva) {
-                Mover = true;
+                 if (Tablero[F_Nueva][C_Nueva] instanceof String) {
+                    Mover = true;
+                } else {
+                    if (((Piezas) Tablero[F_Nueva][C_Nueva]).getId_Jugador() == IdActual) {
+                        Mover = false;
+                    } else {
+                        Mover = true;
+                    }
+                }
             }
         } else {
             Mover = false;

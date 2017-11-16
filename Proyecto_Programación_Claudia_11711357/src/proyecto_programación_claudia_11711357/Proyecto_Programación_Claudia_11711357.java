@@ -16,8 +16,8 @@ public class Proyecto_Programación_Claudia_11711357 {
     public static int Turno = 0;
     public static int JUGADORGANADOR = 0;
     /*POSICIONES GENERALES DE LOS REYES*/
-    public static int F_Rey = 0;
-    public static int C_Rey = 3;
+    public static int F_Rey = 4;
+    public static int C_Rey = 2;
    public static int F_Rey1 = 0;
    public static int C_Rey1 = 3;
  public static int F_Rey2 = 4;
@@ -51,19 +51,19 @@ boolean Bandera=true;
         } else {
             ID = 1;
         }
-        System.out.println("Ingrese el Nombre del Jugador 2");
+        System.out.println("Ingrese el Nombre del Jugador 2: ");
         Nombre = SC.next();
         Jugadores.add(new Jugador(Nombre, 1, ID));
         Tablero = Llenar_Matriz();
         Tablero = Cargar_Piezas(Tablero);
         Tab = Llenar_Matriz();
         while (true) {
-            System.out.println("Estado del ganador"+Ganador);
+           // System.out.println("Estado del ganador"+Ganador);
             if (Ganador) {
                 System.out.println("Felicidades " + Jugadores.get(JUGADORGANADOR).getNombre() + " ha ganado!");
                 break;
             }
-            System.out.println("LA NUEVA POSICION DEL REY  DEL OPONENTE" + F_Rey + "-" + C_Rey);
+          
 
             System.out.println("Turno de:" + Jugadores.get(Turno).getNombre());
             Imprimir_Matriz(Tablero, 7, 0);
@@ -73,17 +73,18 @@ boolean Bandera=true;
             switch (Turno) {
                 case 0:
                     Turno = 1;
-                    F_Rey = F_Rey1;
-                    C_Rey = C_Rey1;
+                    F_Rey = F_Rey2;
+                    C_Rey = C_Rey2;
                     break;
                 case 1:
 //                    Imprimir_Matriz(Tablero, 7, 0);
 //                    CambiarPosicion(Turno);
                     Turno = 0;
-                    F_Rey = F_Rey2;
-                    C_Rey = C_Rey2;
+                    F_Rey = F_Rey1;
+                    C_Rey = C_Rey1;
                     break;
             }
+             // System.out.println("LA NUEVA POSICION DEL REY  DEL OPONENTE" + F_Rey + "-" + C_Rey);
             System.out.println("\n→ NUEVAS POSICIONES ←");
         }
 
@@ -297,7 +298,7 @@ boolean Bandera=true;
         String Posicion = "";
         int JUGADORGANADOR = 5;
         while (Bandera) {
-            System.out.println("Ingrese la posicion que desea mover");
+            System.out.println("→Ingrese la posicion de la pieza que desea mover");
             Posicion = SC.next();
             Arreglo = ValidarMovimiento(Posicion);
             FilaVieja = Arreglo[0];//fILAS
@@ -308,7 +309,7 @@ boolean Bandera=true;
                 continue;
             }
             if (Tablero[FilaVieja][ColumnaVieja] instanceof String) {
-                System.out.println("\033[31mNO PUEDE MOVER EL TABLERO\033[30m");
+                System.out.println("\033[31mLA POSICION SELECCIONADA NO TIENE NINGUNA PIEZA\033[30m");
                 continue;
             }
             if (ValidarPiezasPropias(Turno, ((Piezas) Tablero[FilaVieja][ColumnaVieja]))) {
@@ -324,7 +325,7 @@ boolean Bandera=true;
         }
 
         while (Bandera2) {
-            System.out.println("Ingrese la posicion que desea mover");
+            System.out.println("→Ingrese la Nueva Posicion de la pieza:");
             Posicion = SC.next();
             Arreglo = ValidarMovimiento(Posicion);
             Fila = Arreglo[0];//fILAS

@@ -71,6 +71,13 @@ public class Caballo extends Piezas {
     @Override
     public boolean Restriccion(int F_Vieja, int C_Vieja, Object Matriz[][], int id) {
         boolean Acceso = true;
+        if (F_Vieja == 0) {
+
+        } else if (F_Vieja == 7) {
+
+        } else {
+
+        }
         return Acceso;
     }
 }
