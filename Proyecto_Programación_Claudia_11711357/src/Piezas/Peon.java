@@ -34,7 +34,7 @@ public class Peon extends Piezas {
                     Acceso = true;
                 }
             } else if (C_Vieja == 7) {
-                System.out.println("el error esta aqui perro");
+                //t.println("el error esta aqui perro");
                 if (Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas && (Matriz[F_Vieja + 1][C_Vieja - 1] instanceof String)) {
                     Acceso = false;
                 } else {
@@ -82,7 +82,7 @@ public class Peon extends Piezas {
         } else {
             idOponente = 0;
         }
-        
+
         if (((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador() == 0) {
             Num = 2;
             Num2 = 1;
@@ -97,16 +97,16 @@ public class Peon extends Piezas {
             return true;
         }*/
         //System.out.println("NUM2"+Num2);
-        if (((Piezas) Tablero[F_Vieja][C_Vieja]).getPosicion().equals(F_Vieja + "-" + C_Vieja) &&( F_Vieja+Num == F_Nueva && C_Vieja == C_Nueva)) {//En caso de que sea su primer movimiento
+        if (((Piezas) Tablero[F_Vieja][C_Vieja]).getPosicion().equals(F_Vieja + "-" + C_Vieja) && (F_Vieja + Num == F_Nueva && C_Vieja == C_Nueva)) {//En caso de que sea su primer movimiento
 //            System.out.println("Puede moverse dos para arriba");
 //            System.out.println("PIEZA EN PSICION"+F_Vieja+"-"+C_Vieja);
-            System.out.println("POSICOION ORIGINAL"+((Piezas) Tablero[F_Vieja][C_Vieja]).getPosicion());
+            //System.out.println("POSICOION ORIGINAL"+((Piezas) Tablero[F_Vieja][C_Vieja]).getPosicion());
             if (F_Vieja + Num == F_Nueva && C_Vieja == C_Nueva || F_Vieja + Num2 == F_Nueva && C_Vieja == C_Nueva) { //Solo puede moverse 2 casillas maximo
                 for (int i = 1; i < 3; i++) {
                     if (idActual == 0) {
                         if (Tablero[F_Vieja + i][C_Nueva] instanceof Piezas && idActual == 0) {
                             if (Num1 != 1) {
-                               // System.out.println("ENTRO A LA EXCEPCION DEL MAIN");
+                                // System.out.println("ENTRO A LA EXCEPCION DEL MAIN");
                                 System.out.println("EL PEON TIENE EL PASO BLOQUEADO");
                             }
 
@@ -144,7 +144,7 @@ public class Peon extends Piezas {
     }
 
     public static boolean PeonComer(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1) {
-      /*  if (Num1==1) {
+        /*  if (Num1==1) {
             System.out.println("LA POSICION DEL REY QUE RECIBO"+F_Nueva+"-"+C_Nueva);
         }*/
         boolean Mover = false;
@@ -158,7 +158,6 @@ public class Peon extends Piezas {
 
         int Num = 0;
         Num = F_Nueva - F_Vieja;
-        
 
         if ((Num == 1 && idActual == 0) || (Num == -1 && idActual == 1)) {
             //System.out.println("Num"+Num+"Id Atual"+idActual);
@@ -169,8 +168,8 @@ public class Peon extends Piezas {
                     if (C_Vieja == 0) {
                         if (((Piezas) Tablero[F_Vieja + Num][C_Vieja + 1]).getId_Jugador() == idOponente) {
 
-                               if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
-                                 
+                            if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+
                                 System.out.println("\033[33m ☢ JAQUE ☢ \033[30m");
                             } else {
                                 if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
@@ -188,8 +187,8 @@ public class Peon extends Piezas {
                         /*AQUI TERMINA*/
                     } else if (C_Vieja == 7) {
                         if (((Piezas) Tablero[F_Vieja + Num][C_Vieja - 1]).getId_Jugador() == idOponente) {
-                                if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
-                                 
+                            if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+
                                 System.out.println("\033[33m ☢ JAQUE ☢ \033[30m");
                             } else {
                                 if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
@@ -205,14 +204,14 @@ public class Peon extends Piezas {
                         }
                         /*AQUI TERMINO*/
                     } else {
-                       // System.out.println("ERROR EN EL ELSE");
-                       // System.out.println("EL NUMERO " + Num);
+                        // System.out.println("ERROR EN EL ELSE");
+                        // System.out.println("EL NUMERO " + Num);
                         //System.out.println("FILA: " + (F_Vieja + Num) + " Columna: " + (C_Vieja + Num));
                         //((Piezas) Tablero[F_Vieja + Num][C_Vieja + Num]).getId_Jugador() == idOponente || ((Piezas) Tablero[F_Vieja + Num][C_Vieja - Num]).getId_Jugador() == idOponente
-                        if (Tablero[F_Vieja + Num][C_Vieja + Num] instanceof Piezas||Tablero[F_Vieja + Num][C_Vieja - Num] instanceof Piezas) {
+                        if (Tablero[F_Vieja + Num][C_Vieja + Num] instanceof Piezas || Tablero[F_Vieja + Num][C_Vieja - Num] instanceof Piezas) {
 
-                             if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
-                                 
+                            if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+
                                 System.out.println("\033[33m ☢ JAQUE ☢ \033[30m");
                             } else {
                                 if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {

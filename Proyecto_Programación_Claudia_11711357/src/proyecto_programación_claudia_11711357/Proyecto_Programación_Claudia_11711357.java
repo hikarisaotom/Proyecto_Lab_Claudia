@@ -28,24 +28,23 @@ public class Proyecto_Programación_Claudia_11711357 {
     public static int C_Rey2 = 3;
 
     public static void main(String[] args) {
-int  ID =3;
-boolean Bandera=true;
+        int ID = 3;
+        boolean Bandera = true;
         System.out.println("Ingrese el Nombre del Jugador 1");
         String Nombre = SC.next();
         while (Bandera) {
             try {
                 System.out.println("Seleccione el color con el que desea jugar: \n\n"
                         + "1)\033[32mVerdes.\033[30m \n2)\033[36mCyan.\033[30m");
-                SC=new Scanner(System.in);
+                SC = new Scanner(System.in);
                 ID = SC.nextInt();
                 Bandera = false;
             } catch (Exception e) {
-                Bandera=true;
+                Bandera = true;
                 System.out.println("Se ha Producido un error");
             }
         }
-       
-        
+
         Jugadores.add(new Jugador(Nombre, 0, ID));
         if (ID == 1) {
             ID = 2;
@@ -59,12 +58,11 @@ boolean Bandera=true;
         Tablero = Cargar_Piezas(Tablero);
         Tab = Llenar_Matriz();
         while (true) {
-           // System.out.println("Estado del ganador"+Ganador);
+            // System.out.println("Estado del ganador"+Ganador);
             if (Ganador) {
                 System.out.println("Felicidades " + Jugadores.get(JUGADORGANADOR).getNombre() + " ha ganado!");
                 break;
             }
-          
 
             System.out.println("Turno de:" + Jugadores.get(Turno).getNombre());
             Imprimir_Matriz(Tablero, 7, 0);
@@ -74,18 +72,18 @@ boolean Bandera=true;
             switch (Turno) {
                 case 0:
                     Turno = 1;
-                 
+
                     break;
                 case 1:
 //                    Imprimir_Matriz(Tablero, 7, 0);
 //                    CambiarPosicion(Turno);
                     Turno = 0;
-                   
+
                     break;
             }
-             
+
             System.out.println("\n→ NUEVAS POSICIONES ←");
-          
+
         }
 
     }
@@ -141,9 +139,9 @@ boolean Bandera=true;
             }
         }
         //System.out.println("JUGADORES:"+Jugadores);
-         matriz[3][2] = Jugadores.get(0).getPiezas().get(3);
-        matriz[4][3] = Jugadores.get(1).getPiezas().get(3);
-       // System.out.println("Pieza"+Jugadores.get(Jugador).getPiezas().get(3).getClass().getSimpleName());
+        //matriz[3][2] = Jugadores.get(0).getPiezas().get(3);
+        // matriz[4][3] = Jugadores.get(1).getPiezas().get(3);
+        // System.out.println("Pieza"+Jugadores.get(Jugador).getPiezas().get(3).getClass().getSimpleName());
         return matriz;
     }
 
@@ -336,8 +334,8 @@ boolean Bandera=true;
                 System.out.println("\033[31mERROR EN LOS NUMEROS\033[30m");
                 continue;
             }
-            if ( Tablero[FilaVieja][ColumnaVieja] instanceof Peon) {
-                
+            if (Tablero[FilaVieja][ColumnaVieja] instanceof Peon) {
+
             }
             if (!((Piezas) Tablero[FilaVieja][ColumnaVieja]).Movimiento(FilaVieja, ColumnaVieja, Fila, Columna, 0, Tablero)) {
                 System.out.println("\033[31m MOVIMIENTO INVALIDO PARA LA PIEZA: " + ((Piezas) Tablero[FilaVieja][ColumnaVieja]).getNombre().toUpperCase() + "\033[30m");
@@ -356,19 +354,20 @@ boolean Bandera=true;
                 C_Rey2 = Columna;
             }
 
-          //  System.out.println("LA NUEVA POSICION DEL REY  " + F_Rey + "-" + C_Rey);
+            //  System.out.println("LA NUEVA POSICION DEL REY  " + F_Rey + "-" + C_Rey);
         }
         Tablero[Fila][Columna] = Tablero[FilaVieja][ColumnaVieja];
         Relleno(FilaVieja, ColumnaVieja);
-      
-        if (Id == 0) {
-                        System.out.println("TURNO DEL JUGADOR 1");
 
-            System.out.println("Las posiciones del rey 2:" + F_Rey2 + "-" + C_Rey2);
+        if (Id == 0) {
+           // System.out.println("TURNO DEL JUGADOR 1");
+
+           //
+           System.out.println("Las posiciones del rey 2:" + F_Rey2 + "-" + C_Rey2);
             ((Piezas) Tablero[Fila][Columna]).Movimiento(Fila, Columna, F_Rey2, C_Rey2, 1, Tablero);
         } else {
-            System.out.println("TURNO DEL JUGADOR 2");
-            System.out.println("Las posiciones del rey 1: " + F_Rey1 + "-" + C_Rey1);
+           // System.out.println("TURNO DEL JUGADOR 2");
+            //System.out.println("Las posiciones del rey 1: " + F_Rey1 + "-" + C_Rey1);
 
             ((Piezas) Tablero[Fila][Columna]).Movimiento(Fila, Columna, F_Rey1, C_Rey1, 1, Tablero);
         }
@@ -398,39 +397,39 @@ boolean Bandera=true;
         ///int [] A= new int(2);
         int[] A = {15, 15};
         try {
-            if (Character.isDigit(Posicion.charAt(0)) || Character.isAlphabetic(Posicion.charAt(1)) || Posicion.length() == 1||Posicion.length() >2) {
-            return A;
-        }
-        //ValidarMovimiento
-        switch (("" + Posicion.charAt(0)).toUpperCase()) {
-            case "A":
-                Letra = 0;
-                break;
-            case "B":
-                Letra = 1;
-                break;
-            case "C":
-                Letra = 2;
-                break;
-            case "D":
-                Letra = 3;
-                break;
-            case "E":
-                Letra = 4;
-                break;
-            case "F":
-                Letra = 5;
-                break;
-            case "G":
-                Letra = 6;
-                break;
-            case "H":
-                Letra = 7;
-                break;
-        }
-        A[1] = Letra;//Columnas
-        A[0] = Integer.parseInt("" + Posicion.charAt(1));//Filas
-        }catch (Exception e){
+            if (Character.isDigit(Posicion.charAt(0)) || Character.isAlphabetic(Posicion.charAt(1)) || Posicion.length() == 1 || Posicion.length() > 2) {
+                return A;
+            }
+            //ValidarMovimiento
+            switch (("" + Posicion.charAt(0)).toUpperCase()) {
+                case "A":
+                    Letra = 0;
+                    break;
+                case "B":
+                    Letra = 1;
+                    break;
+                case "C":
+                    Letra = 2;
+                    break;
+                case "D":
+                    Letra = 3;
+                    break;
+                case "E":
+                    Letra = 4;
+                    break;
+                case "F":
+                    Letra = 5;
+                    break;
+                case "G":
+                    Letra = 6;
+                    break;
+                case "H":
+                    Letra = 7;
+                    break;
+            }
+            A[1] = Letra;//Columnas
+            A[0] = Integer.parseInt("" + Posicion.charAt(1));//Filas
+        } catch (Exception e) {
             System.out.println("Se ha Producido un error");
         }
         return A;
@@ -991,7 +990,7 @@ boolean Bandera=true;
             FilaVieja = SC.nextInt();
             System.out.println("Ingrese la Columnade la pieza que desea mover.");
             ColumnaVieja = SC.nextInt();*/
-/*LLAMADO DE LOSMETODOS EN EL CAMBIAR PIEZA
+ /*LLAMADO DE LOSMETODOS EN EL CAMBIAR PIEZA
 /* if (Tablero[FilaVieja][ColumnaVieja] instanceof Torre) {
 
                 if (!MovimientoTorre(FilaVieja, ColumnaVieja, Fila, Columna, 0)) {
@@ -1043,4 +1042,4 @@ boolean Bandera=true;
 LOS METODOS FUNCIONALES
 
 
-*/
+ */
