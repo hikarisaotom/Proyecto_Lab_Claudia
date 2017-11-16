@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package Piezas;
-
-import static proyecto_programación_claudia_11711357.Proyecto_Programación_Claudia_11711357.C_Rey;
-import static proyecto_programación_claudia_11711357.Proyecto_Programación_Claudia_11711357.F_Rey;
+//
+//import static proyecto_programación_claudia_11711357.Proyecto_Programación_Claudia_11711357.C_Rey;
+//import static proyecto_programación_claudia_11711357.Proyecto_Programación_Claudia_11711357.F_Rey;
 
 /**
  *

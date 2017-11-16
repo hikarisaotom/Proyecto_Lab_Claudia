@@ -25,23 +25,68 @@ public class Alfil extends Piezas {
     public boolean Restriccion(int F_Vieja, int C_Vieja, Object Matriz[][], int id) {
         boolean Acceso = false;
         if (F_Vieja == 0) {
-            if (Matriz[F_Vieja + 1][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja + 1][C_Vieja - 1] instanceof Piezas) {
-                Acceso = false;
+            if (C_Vieja == 0) {
+                if (Matriz[F_Vieja + 1][C_Vieja + 1] instanceof Piezas) {
+                    Acceso = false;
+                } else {
+                    Acceso = true;
+                }
+            } else if (C_Vieja == 7) {
+                if (Matriz[F_Vieja - 1][C_Vieja - 1] instanceof Piezas) {
+                    Acceso = false;
+                } else {
+                    Acceso = true;
+                }
             } else {
-                Acceso = true;
+                if (Matriz[F_Vieja + 1][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja + 1][C_Vieja - 1] instanceof Piezas) {
+                    Acceso = false;
+                } else {
+                    Acceso = true;
+                }
             }
         } else if (F_Vieja == 7) {
-            if (Matriz[F_Vieja - 1][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja - 1][C_Vieja - 1] instanceof Piezas) {
+            
+            if (C_Vieja==0) {
+                  if (Matriz[F_Vieja - 1][C_Vieja + 1] instanceof Piezas) {
                 Acceso = false;
             } else {
                 Acceso = true;
             }
+            }else if (C_Vieja==7){
+                  if (Matriz[F_Vieja - 1][C_Vieja - 1] instanceof Piezas) {
+                Acceso = false;
+            } else {
+                Acceso = true;
+            }
+            }else{
+                  if (Matriz[F_Vieja - 1][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja - 1][C_Vieja - 1] instanceof Piezas) {
+                Acceso = false;
+            } else {
+                Acceso = true;
+            }
+            }
         } else {//NO ESTA EN LOS EXTREMOS.
-            if (Matriz[F_Vieja + 1][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja + 1][C_Vieja - 1] instanceof Piezas
+            if (C_Vieja==0) {
+                 if (Matriz[F_Vieja + 1][C_Vieja + 1] instanceof Piezas 
+                    && Matriz[F_Vieja - 1][C_Vieja + 1] instanceof Piezas ) {
+                Acceso = false;
+            } else {
+                Acceso = true;
+            }
+            }else if (C_Vieja==7){
+                 if ( Matriz[F_Vieja + 1][C_Vieja - 1] instanceof Piezas
+                    && Matriz[F_Vieja - 1][C_Vieja - 1] instanceof Piezas) {
+                Acceso = false;
+            } else {
+                Acceso = true;
+            }
+            }else{
+                   if (Matriz[F_Vieja + 1][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja + 1][C_Vieja - 1] instanceof Piezas
                     && Matriz[F_Vieja - 1][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja - 1][C_Vieja - 1] instanceof Piezas) {
                 Acceso = false;
             } else {
                 Acceso = true;
+            }
             }
         }
         return Acceso;
@@ -63,7 +108,11 @@ public class Alfil extends Piezas {
             System.out.println("MOVIMIENTO HACIA ABAJO.");
         } else {
             System.out.println("MOVIMIENTO HACIA ARRIBA");
-        }*/
+        }*/if (F_Vieja==7) {
+            
+      //  }else if(){
+            
+        }
         if (C_Vieja + Num == C_Nueva || C_Vieja - Num == C_Nueva) {
             if (Num < 0) {//Movimiento hacia abajo
                 if (C_Nueva < C_Vieja) {//Movimeinto hacia la izquierda
@@ -84,7 +133,7 @@ public class Alfil extends Piezas {
                                         }
                                         return false;
                                     } else {
-                                        if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                                        /*if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
                                             System.out.println("JAQUE");
                                         } else {
                                             if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
@@ -93,6 +142,18 @@ public class Alfil extends Piezas {
                                                 JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
                                             } else {
                                                 System.out.println("PIEZA CAPTURADA");
+                                            }
+                                        }*/
+                                        if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+
+                                            System.out.println("\033[33m ☢ JAQUE ☢ \033[30m");
+                                        } else {
+                                            if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                                                System.out.println("\033[31m ☠ JAQUE MATE ☠ \033[30m");
+                                                Ganador = true;
+                                                JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
+                                            } else {
+                                                System.out.println("\033[32m ★ PIEZA CAPTURADA ★\033[30m");
                                             }
                                         }
                                         return true;
@@ -125,7 +186,7 @@ public class Alfil extends Piezas {
                                         System.out.println("");
                                         return false;
                                     } else {
-                                        if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                                        /*if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
                                             System.out.println("JAQUE");
                                         } else {
                                             if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
@@ -134,6 +195,18 @@ public class Alfil extends Piezas {
                                                 JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
                                             } else {
                                                 System.out.println("PIEZA CAPTURADA");
+                                            }
+                                        }*/
+                                        if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+
+                                            System.out.println("\033[33m ☢ JAQUE ☢ \033[30m");
+                                        } else {
+                                            if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                                                System.out.println("\033[31m ☠ JAQUE MATE ☠ \033[30m");
+                                                Ganador = true;
+                                                JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
+                                            } else {
+                                                System.out.println("\033[32m ★ PIEZA CAPTURADA ★\033[30m");
                                             }
                                         }
                                         return true;
@@ -169,7 +242,7 @@ public class Alfil extends Piezas {
                                         System.out.println("");
                                         return false;
                                     } else {
-                                        if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                                        /*if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
                                             System.out.println("JAQUE");
                                         } else {
                                             if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
@@ -178,6 +251,18 @@ public class Alfil extends Piezas {
                                                 JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
                                             } else {
                                                 System.out.println("PIEZA CAPTURADA");
+                                            }
+                                        }*/
+                                        if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+
+                                            System.out.println("\033[33m ☢ JAQUE ☢ \033[30m");
+                                        } else {
+                                            if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                                                System.out.println("\033[31m ☠ JAQUE MATE ☠ \033[30m");
+                                                Ganador = true;
+                                                JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
+                                            } else {
+                                                System.out.println("\033[32m ★ PIEZA CAPTURADA ★\033[30m");
                                             }
                                         }
                                         return true;
@@ -210,7 +295,7 @@ public class Alfil extends Piezas {
                                         System.out.println("");
                                         return false;
                                     } else {
-                                        if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                                        /* if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
                                             System.out.println("JAQUE");
                                         } else {
                                             if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
@@ -219,6 +304,18 @@ public class Alfil extends Piezas {
                                                 JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
                                             } else {
                                                 System.out.println("PIEZA CAPTURADA");
+                                            }
+                                        }*/
+                                        if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+
+                                            System.out.println("\033[33m ☢ JAQUE ☢ \033[30m");
+                                        } else {
+                                            if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                                                System.out.println("\033[31m ☠ JAQUE MATE ☠ \033[30m");
+                                                Ganador = true;
+                                                JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
+                                            } else {
+                                                System.out.println("\033[32m ★ PIEZA CAPTURADA ★\033[30m");
                                             }
                                         }
                                         return true;

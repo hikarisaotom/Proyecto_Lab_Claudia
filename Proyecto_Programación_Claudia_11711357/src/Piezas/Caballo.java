@@ -44,6 +44,7 @@ public class Caballo extends Piezas {
         } else {//Default, error.
             Mover = false;
         }
+        
         if (Mover && Tablero[F_Nueva][C_Nueva] instanceof Piezas) {
             if (((Piezas) Tablero[F_Nueva][C_Nueva]).getId_Jugador() == ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador()) {
                 if (Num1 != 1) {
@@ -51,7 +52,8 @@ public class Caballo extends Piezas {
                 }
                 return false;
             } else {
-                if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                
+               /* if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
                     System.out.println("JAQUE");
                 } else {
                     if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
@@ -61,7 +63,20 @@ public class Caballo extends Piezas {
                     } else {
                         System.out.println("PIEZA CAPTURADA");
                     }
-                }
+                }*/
+            
+                if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                    System.out.println("debio entrar aqui");
+                                System.out.println("\033[33m ☢ JAQUE ☢ \033[30m");
+                            } else {
+                                if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                                    System.out.println("\033[31m ☠ JAQUE MATE ☠ \033[30m");
+                                    Ganador = true;
+                                    JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
+                                } else {
+                                    System.out.println("\033[32m ★ PIEZA CAPTURADA ★\033[30m");
+                                }
+                            }
                 return true;
             }
         }

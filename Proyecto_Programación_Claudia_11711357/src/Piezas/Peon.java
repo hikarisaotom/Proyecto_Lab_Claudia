@@ -82,6 +82,7 @@ public class Peon extends Piezas {
         } else {
             idOponente = 0;
         }
+        
         if (((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador() == 0) {
             Num = 2;
             Num2 = 1;
@@ -95,9 +96,11 @@ public class Peon extends Piezas {
         /*  if (((idActual==1&&F_Nueva==F_Vieja-1)||(idActual==0&&F_Nueva==F_Vieja+1))&&C_Vieja==C_Nueva&&Tablero[F_Nueva+Num2][C_Vieja]instanceof String) {
             return true;
         }*/
-        //  System.out.println("SALTO EL PEON COMER");
-        if (((Piezas) Tablero[F_Vieja][C_Vieja]).getPosicion().equals(F_Vieja + "-" + C_Vieja) && F_Vieja == F_Nueva + 2 || F_Vieja == F_Nueva - 2 && C_Vieja == C_Nueva) {//En caso de que sea su primer movimiento
-            //System.out.println("Puede moverse dos para arriba");
+        //System.out.println("NUM2"+Num2);
+        if (((Piezas) Tablero[F_Vieja][C_Vieja]).getPosicion().equals(F_Vieja + "-" + C_Vieja) &&( F_Vieja+Num == F_Nueva && C_Vieja == C_Nueva)) {//En caso de que sea su primer movimiento
+//            System.out.println("Puede moverse dos para arriba");
+//            System.out.println("PIEZA EN PSICION"+F_Vieja+"-"+C_Vieja);
+            System.out.println("POSICOION ORIGINAL"+((Piezas) Tablero[F_Vieja][C_Vieja]).getPosicion());
             if (F_Vieja + Num == F_Nueva && C_Vieja == C_Nueva || F_Vieja + Num2 == F_Nueva && C_Vieja == C_Nueva) { //Solo puede moverse 2 casillas maximo
                 for (int i = 1; i < 3; i++) {
                     if (idActual == 0) {
@@ -155,6 +158,7 @@ public class Peon extends Piezas {
 
         int Num = 0;
         Num = F_Nueva - F_Vieja;
+        
 
         if ((Num == 1 && idActual == 0) || (Num == -1 && idActual == 1)) {
             //System.out.println("Num"+Num+"Id Atual"+idActual);
@@ -204,7 +208,8 @@ public class Peon extends Piezas {
                        // System.out.println("ERROR EN EL ELSE");
                        // System.out.println("EL NUMERO " + Num);
                         //System.out.println("FILA: " + (F_Vieja + Num) + " Columna: " + (C_Vieja + Num));
-                        if (((Piezas) Tablero[F_Vieja + Num][C_Vieja + Num]).getId_Jugador() == idOponente || ((Piezas) Tablero[F_Vieja + Num][C_Vieja - Num]).getId_Jugador() == idOponente) {
+                        //((Piezas) Tablero[F_Vieja + Num][C_Vieja + Num]).getId_Jugador() == idOponente || ((Piezas) Tablero[F_Vieja + Num][C_Vieja - Num]).getId_Jugador() == idOponente
+                        if (Tablero[F_Vieja + Num][C_Vieja + Num] instanceof Piezas||Tablero[F_Vieja + Num][C_Vieja - Num] instanceof Piezas) {
 
                              if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
                                  

@@ -16,15 +16,16 @@ public class Proyecto_Programación_Claudia_11711357 {
     public static int Turno = 0;
     public static int JUGADORGANADOR = 0;
     /*POSICIONES GENERALES DE LOS REYES*/
-    public static int F_Rey = 4;
-    public static int C_Rey = 2;
-   public static int F_Rey1 = 0;
-   public static int C_Rey1 = 3;
- public static int F_Rey2 = 4;
-   public static int C_Rey2 = 2;
-//   
-//    public static int F_Rey2 = 7;
-//    public static int C_Rey2 = 3;
+//    public static int F_Rey = 0;
+//    public static int C_Rey = 0;
+//   public static int F_Rey1 = 0;
+//   public static int C_Rey1 = 3;
+// public static int F_Rey2 = 7;
+//   public static int C_Rey2 = 3;
+    public static int F_Rey1 = 3;
+    public static int C_Rey1 = 2;
+    public static int F_Rey2 = 4;
+    public static int C_Rey2 = 3;
 
     public static void main(String[] args) {
 int  ID =3;
@@ -73,19 +74,18 @@ boolean Bandera=true;
             switch (Turno) {
                 case 0:
                     Turno = 1;
-                    F_Rey = F_Rey2;
-                    C_Rey = C_Rey2;
+                 
                     break;
                 case 1:
 //                    Imprimir_Matriz(Tablero, 7, 0);
 //                    CambiarPosicion(Turno);
                     Turno = 0;
-                    F_Rey = F_Rey1;
-                    C_Rey = C_Rey1;
+                   
                     break;
             }
-             // System.out.println("LA NUEVA POSICION DEL REY  DEL OPONENTE" + F_Rey + "-" + C_Rey);
+             
             System.out.println("\n→ NUEVAS POSICIONES ←");
+          
         }
 
     }
@@ -141,8 +141,9 @@ boolean Bandera=true;
             }
         }
         //System.out.println("JUGADORES:"+Jugadores);
-       matriz[4][2] = Jugadores.get(Jugador).getPiezas().get(3);
-        System.out.println("Pieza"+Jugadores.get(Jugador).getPiezas().get(3).getClass().getSimpleName());
+         matriz[3][2] = Jugadores.get(0).getPiezas().get(3);
+        matriz[4][3] = Jugadores.get(1).getPiezas().get(3);
+       // System.out.println("Pieza"+Jugadores.get(Jugador).getPiezas().get(3).getClass().getSimpleName());
         return matriz;
     }
 
@@ -355,11 +356,22 @@ boolean Bandera=true;
                 C_Rey2 = Columna;
             }
 
-            System.out.println("LA NUEVA POSICION DEL REY  " + F_Rey + "-" + C_Rey);
+          //  System.out.println("LA NUEVA POSICION DEL REY  " + F_Rey + "-" + C_Rey);
         }
         Tablero[Fila][Columna] = Tablero[FilaVieja][ColumnaVieja];
         Relleno(FilaVieja, ColumnaVieja);
-        ((Piezas) Tablero[Fila][Columna]).Movimiento(Fila, Columna, F_Rey, C_Rey, 1, Tablero);
+      
+        if (Id == 0) {
+                        System.out.println("TURNO DEL JUGADOR 1");
+
+            System.out.println("Las posiciones del rey 2:" + F_Rey2 + "-" + C_Rey2);
+            ((Piezas) Tablero[Fila][Columna]).Movimiento(Fila, Columna, F_Rey2, C_Rey2, 1, Tablero);
+        } else {
+            System.out.println("TURNO DEL JUGADOR 2");
+            System.out.println("Las posiciones del rey 1: " + F_Rey1 + "-" + C_Rey1);
+
+            ((Piezas) Tablero[Fila][Columna]).Movimiento(Fila, Columna, F_Rey1, C_Rey1, 1, Tablero);
+        }
     }
 
     public static void Relleno(int FilaVieja, int ColumnaVieja) {
