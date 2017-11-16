@@ -141,9 +141,9 @@ public class Peon extends Piezas {
     }
 
     public static boolean PeonComer(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1) {
-        if (Num1==1) {
+      /*  if (Num1==1) {
             System.out.println("LA POSICION DEL REY QUE RECIBO"+F_Nueva+"-"+C_Nueva);
-        }
+        }*/
         boolean Mover = false;
         int idActual = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
         int idOponente;
@@ -165,15 +165,16 @@ public class Peon extends Piezas {
                     if (C_Vieja == 0) {
                         if (((Piezas) Tablero[F_Vieja + Num][C_Vieja + 1]).getId_Jugador() == idOponente) {
 
-                            if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
-                                System.out.println("\033[33mJAQUE\033[30m");
+                               if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                                 
+                                System.out.println("\033[33m ☢ JAQUE ☢ \033[30m");
                             } else {
                                 if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
-                                    System.out.println("\033[31mJAQUE MATE\033[30m");
+                                    System.out.println("\033[31m ☠ JAQUE MATE ☠ \033[30m");
                                     Ganador = true;
                                     JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
                                 } else {
-                                    System.out.println("\033[32mPIEZA CAPTURADA\033[30m");
+                                    System.out.println("\033[32m ★ PIEZA CAPTURADA ★\033[30m");
                                 }
                             }
                             Mover = true;
@@ -183,15 +184,16 @@ public class Peon extends Piezas {
                         /*AQUI TERMINA*/
                     } else if (C_Vieja == 7) {
                         if (((Piezas) Tablero[F_Vieja + Num][C_Vieja - 1]).getId_Jugador() == idOponente) {
-                             if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
-                                System.out.println("\033[33mJAQUE\033[30m");
+                                if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
+                                 
+                                System.out.println("\033[33m ☢ JAQUE ☢ \033[30m");
                             } else {
                                 if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
-                                    System.out.println("\033[31mJAQUE MATE\033[30m");
+                                    System.out.println("\033[31m ☠ JAQUE MATE ☠ \033[30m");
                                     Ganador = true;
                                     JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
                                 } else {
-                                    System.out.println("\033[32mPIEZA CAPTURADA\033[30m");
+                                    System.out.println("\033[32m ★ PIEZA CAPTURADA ★\033[30m");
                                 }
                             }
                             Mover = true;
@@ -205,14 +207,15 @@ public class Peon extends Piezas {
                         if (((Piezas) Tablero[F_Vieja + Num][C_Vieja + Num]).getId_Jugador() == idOponente || ((Piezas) Tablero[F_Vieja + Num][C_Vieja - Num]).getId_Jugador() == idOponente) {
 
                              if (Num1 == 1 && ((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
-                                System.out.println("\033[33mJAQUE\033[30m");
+                                 
+                                System.out.println("\033[33m ☢ JAQUE ☢ \033[30m");
                             } else {
                                 if (((Piezas) Tablero[F_Nueva][C_Nueva]).getPuntos() == 10) {
-                                    System.out.println("\033[31mJAQUE MATE\033[30m");
+                                    System.out.println("\033[31m ☠ JAQUE MATE ☠ \033[30m");
                                     Ganador = true;
                                     JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
                                 } else {
-                                    System.out.println("\033[32mPIEZA CAPTURADA\033[30m");
+                                    System.out.println("\033[32m ★ PIEZA CAPTURADA ★\033[30m");
                                 }
                             }
                             Mover = true;
