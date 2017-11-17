@@ -24,16 +24,28 @@ public class Torre extends Piezas {
     @Override
     public boolean Restriccion(int F_Vieja, int C_Vieja, Object Matriz[][], int id) {
         boolean Acceso = false;
+        int IdActual = ((Piezas) Matriz[F_Vieja][C_Vieja]).getId_Jugador();
         if (F_Vieja == 0) {
             if (C_Vieja == 0) {
                 if (Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas) {
-                    Acceso = false;
+                    if (((Piezas) Matriz[F_Vieja + 1][C_Vieja]).getId_Jugador() == IdActual
+                            && ((Piezas) Matriz[F_Vieja][C_Vieja + 1]).getId_Jugador() == IdActual) {
+
+                        Acceso = false;
+                    } else {
+                        Acceso = true;
+                    }
                 } else {
                     Acceso = true;
                 }
             } else if (C_Vieja == 7) {
                 if (Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas) {
-                    Acceso = false;
+                    if (((Piezas) Matriz[F_Vieja + 1][C_Vieja]).getId_Jugador() == IdActual && ((Piezas) Matriz[F_Vieja][C_Vieja - 1]).getId_Jugador() == IdActual) {
+
+                        Acceso = false;
+                    } else {
+                        Acceso = true;
+                    }
                 } else {
                     Acceso = true;
                 }
@@ -41,39 +53,74 @@ public class Torre extends Piezas {
         } else if (F_Vieja == 7) {
             if (C_Vieja == 0) {
                 if (Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas) {
-                    Acceso = false;
+                    if (((Piezas) Matriz[F_Vieja - 1][C_Vieja]).getId_Jugador() == IdActual && ((Piezas) Matriz[F_Vieja][C_Vieja + 1]).getId_Jugador() == IdActual) {
+                        Acceso = false;
+                    } else {
+                        Acceso = true;
+                    }
                 } else {
                     Acceso = true;
                 }
             } else if (C_Vieja == 7) {
-                if (Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas) {
-                    Acceso = false;
+                if (Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas
+                        && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas) {
+                    if (((Piezas) Matriz[F_Vieja - 1][C_Vieja]).getId_Jugador() == IdActual
+                            && ((Piezas) Matriz[F_Vieja][C_Vieja - 1]).getId_Jugador() == IdActual) {
+                        Acceso = false;
+                    } else {
+                        Acceso = true;
+                    }
                 } else {
                     Acceso = true;
                 }
             }//Fin del if de las filas
         } else {
-            if (C_Vieja==0) {
-                 if (Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas //Movimientos hacia los lados.
-                        && Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas) {//Movimientos hacia arriba y abajo
-                    Acceso = false;
+            if (C_Vieja == 0) {
+                if (Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas //Movimientos hacia los lados.
+                        && Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas
+                        && Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas) {//Movimientos hacia arriba y abajo
+                    if (((Piezas) Matriz[F_Vieja][C_Vieja + 1]).getId_Jugador() == IdActual
+                            && ((Piezas) Matriz[F_Vieja + 1][C_Vieja]).getId_Jugador() == IdActual
+                            && ((Piezas) Matriz[F_Vieja - 1][C_Vieja]).getId_Jugador() == IdActual) {
+                        Acceso = false;
+                    } else {
+                        Acceso = true;
+                    }
                 } else {
                     Acceso = true;
                 }
-            }else if (C_Vieja==7){
-                  if ( Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas//Movimientos hacia los lados.
-                    && Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas) {//Movimientos hacia arriba y abajo
-                Acceso = false;
+            } else if (C_Vieja == 7) {
+                if (Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas//Movimientos hacia los lados.
+                        && Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas
+                        && Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas) {//Movimientos hacia arriba y abajo
+                    if (((Piezas) Matriz[F_Vieja][C_Vieja - 1]).getId_Jugador() == IdActual
+                            && ((Piezas) Matriz[F_Vieja + 1][C_Vieja]).getId_Jugador() == IdActual
+                            && ((Piezas) Matriz[F_Vieja - 1][C_Vieja]).getId_Jugador() == IdActual) {
+                        Acceso = false;
+                    } else {
+                        Acceso = true;
+                    }
+                } else {
+                    Acceso = true;
+                }
             } else {
-                Acceso = true;
-            }
-            }else{
-                 if (Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas//Movimientos hacia los lados.
-                    && Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas && Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas) {//Movimientos hacia arriba y abajo
-                Acceso = false;
-            } else {
-                Acceso = true;
-            }
+                if (Matriz[F_Vieja][C_Vieja + 1] instanceof Piezas
+                        && Matriz[F_Vieja][C_Vieja - 1] instanceof Piezas//Movimientos hacia los lados.
+                        && Matriz[F_Vieja + 1][C_Vieja] instanceof Piezas
+                        && Matriz[F_Vieja - 1][C_Vieja] instanceof Piezas) {//Movimientos hacia arriba y abajo
+                    if (((Piezas) Matriz[F_Vieja][C_Vieja + 1]).getId_Jugador() == IdActual
+                            && ((Piezas) Matriz[F_Vieja][C_Vieja - 1]).getId_Jugador() == IdActual
+                            && ((Piezas) Matriz[F_Vieja + 1][C_Vieja]).getId_Jugador() == IdActual
+                            && ((Piezas) Matriz[F_Vieja - 1][C_Vieja]).getId_Jugador() == IdActual) {
+
+                        Acceso = false;
+                    } else {
+                        Acceso = true;
+                    }
+                } else {
+                    Acceso = true;
+                }
+
             }
         }
         return Acceso;
