@@ -26,34 +26,31 @@ public class Proyecto_Programación_Claudia_11711357 {
     public static int C_Rey1 = 2;
     public static int F_Rey2 = 4;
     public static int C_Rey2 = 3;
+    public static String Cyan = "\033[36m";
+    public static String Rojo = "\033[31m";
+    public static String Azul = "\033[34m";
+    public static String Verde = "\033[32m";
+    public static String Amarillo = "\033[33m";
+    public static String Magenta = "\033[35m";
+    public static String Negro = "\033[30m";
+    public static String Color1 = "\033[30m";
+    public static String Color2 = "\033[30m";
 
     public static void main(String[] args) {
-        int ID = 3;
-        boolean Bandera = true;
-        System.out.println("Ingrese el Nombre del Jugador 1");
+       // int ID = 3;
+        //boolean Bandera = true;
+        System.out.println(Azul + "*******************Ingrese el Nombre del Jugador 1*******************" + Negro);
+        System.out.print("→");
         String Nombre = SC.next();
-        while (Bandera) {
-            try {
-                System.out.println("Seleccione el color con el que desea jugar: \n\n"
-                        + "1)\033[32mVerdes.\033[30m \n2)\033[36mCyan.\033[30m");
-                SC = new Scanner(System.in);
-                ID = SC.nextInt();
-                Bandera = false;
-            } catch (Exception e) {
-                Bandera = true;
-                System.out.println("Se ha Producido un error");
-            }
-        }
-
-        Jugadores.add(new Jugador(Nombre, 0, ID));
-        if (ID == 1) {
-            ID = 2;
-        } else {
-            ID = 1;
-        }
-        System.out.println("Ingrese el Nombre del Jugador 2: ");
+        System.out.println(Azul + "********************************************************************" + Negro);
+        Color1 = ColorPieza(0);
+        Jugadores.add(new Jugador(Nombre, 0, 1));
+        System.out.println(Azul + "*******************Ingrese el Nombre del Jugador 2*******************" + Negro);
+        System.out.print("→");
         Nombre = SC.next();
-        Jugadores.add(new Jugador(Nombre, 1, ID));
+        System.out.println(Azul + "********************************************************************" + Negro);
+        Color2 = ColorPieza(1);
+        Jugadores.add(new Jugador(Nombre, 1, 2));
         Tablero = Llenar_Matriz();
         Tablero = Cargar_Piezas(Tablero);
         Tab = Llenar_Matriz();
@@ -63,31 +60,82 @@ public class Proyecto_Programación_Claudia_11711357 {
                 System.out.println("Felicidades " + Jugadores.get(JUGADORGANADOR).getNombre() + " ha ganado!");
                 break;
             }
-
             System.out.println("Turno de:" + Jugadores.get(Turno).getNombre());
             Imprimir_Matriz(Tablero, 7, 0);
             System.out.println("\n---------------------------------------------");
             CambiarPosicion(Turno);
-
             switch (Turno) {
                 case 0:
                     Turno = 1;
-
                     break;
                 case 1:
-//                    Imprimir_Matriz(Tablero, 7, 0);
-//                    CambiarPosicion(Turno);
+                  Imprimir_Matriz(Tablero, 7, 0);
+                CambiarPosicion(Turno);
                     Turno = 0;
-
                     break;
             }
-
             System.out.println("\n→ NUEVAS POSICIONES ←");
-
         }
 
     }
+    public static String ColorPieza(int Jugador) {
+        String Color = "";
+        int ID = 5;
+        int Numero = -1;
 
+        while (Numero == -1) {
+            try {
+                System.out.println("→Ingrese el Color con el que desea Jugar: \n"
+                        + Azul + "1)Azul.\n"
+                        + Rojo + "2)Rojo.\n" + Negro
+                        + Verde + "3)Verde.\n" + Negro
+                        + Amarillo + "4)Amarillo.\n" + Negro
+                        + Magenta + "5)Magenta.\n" + Negro
+                        + Cyan + "6)Cyan." + Negro
+                );
+                System.out.print("→");
+                SC = new Scanner(System.in);
+
+                ID = SC.nextInt();
+
+                switch (ID) {
+                    case 1:
+                        Color = Azul;
+                        break;
+                    case 2:
+                        Color = Rojo;
+                        break;
+                    case 3:
+                        Color = Verde;
+                        break;
+                    case 4:
+                        Color = Amarillo;
+                        break;
+                    case 5:
+                        Color = Magenta;
+                        break;
+                    case 6:
+                        Color = Cyan;
+                        break;
+                    default:
+                        System.out.println(Rojo + "COLOR NO VALIDO" + Negro);
+                        continue;
+                }
+               
+                if (Jugador == 1 && Color.equals(Color1)) {
+                    System.out.println(Amarillo+"El Jugador 1 Ya escogio ese color."+Negro);
+                   continue;
+                } else {
+                    Numero = 6;
+                }
+            } catch (Exception e) {
+                System.out.println(Rojo + "Ha ocurrido un error" + Negro);
+                continue;
+            }
+        }
+       
+        return Color;
+    }
     public static Object[][] Llenar_Matriz() {
         Object[][] Tablero = new Object[8][8];
         boolean Bandera = true;
@@ -229,9 +277,9 @@ public class Proyecto_Programación_Claudia_11711357 {
             /*Determinar el color de la pieza.*/
             if (!(matriz[filas][cols] instanceof String)) {
                 if (((Piezas) matriz[filas][cols]).getColor() == 1) {//Rojas
-                    System.out.print("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "  \033[30m");
+                    System.out.print(Color1+ ((Piezas) matriz[filas][cols]).getSimbolo() + "  "+Negro);
                 } else {//Cyan
-                    System.out.print("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "  \033[30m");
+                    System.out.print(Color2+ ((Piezas) matriz[filas][cols]).getSimbolo() + "  "+Negro);
                 }
             } else {
                 System.out.print(matriz[filas][cols] + "  ");
@@ -243,9 +291,9 @@ public class Proyecto_Programación_Claudia_11711357 {
                 /*Determinamos el color.*/
                 if (!(matriz[filas][cols] instanceof String)) {
                     if (((Piezas) matriz[filas][cols]).getColor() == 1) {//Rojas
-                        System.out.println("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "  \033[30m");
+                        System.out.println(Color1+ ((Piezas) matriz[filas][cols]).getSimbolo() + "  "+Negro);
                     } else {//Cyan
-                        System.out.println("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "  \033[30m");
+                        System.out.println(Color2+ ((Piezas) matriz[filas][cols]).getSimbolo() + "  "+Negro);
                     }
                 } else {//si es texto pasa esto
                     System.out.println(matriz[filas][cols]);
@@ -257,9 +305,9 @@ public class Proyecto_Programación_Claudia_11711357 {
                 /*Determinamos el color.*/
                 if (!(matriz[filas][cols] instanceof String)) {
                     if (((Piezas) matriz[filas][cols]).getColor() == 1) {//Rojas
-                        System.out.print("\033[32m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "  \033[30m");
+                        System.out.print(Color1+ ((Piezas) matriz[filas][cols]).getSimbolo() + "  "+Negro);
                     } else {//Cyan
-                        System.out.print("\033[36m" + ((Piezas) matriz[filas][cols]).getSimbolo() + "  \033[30m");
+                        System.out.print(Color2 + ((Piezas) matriz[filas][cols]).getSimbolo() + "  "+Negro);
                     }
                 } else {//si es texto pasa esto
                     System.out.print(matriz[filas][cols] + "  ");
