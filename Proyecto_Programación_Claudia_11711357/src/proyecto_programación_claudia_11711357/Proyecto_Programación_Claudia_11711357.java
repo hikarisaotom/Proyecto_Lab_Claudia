@@ -39,13 +39,13 @@ public class Proyecto_Programación_Claudia_11711357 {
     public static void main(String[] args) {
        // int ID = 3;
         //boolean Bandera = true;
-        System.out.println(Azul + "*******************Ingrese el Nombre del Jugador 1*******************" + Negro);
+        System.out.println(Azul + "******************* ☀ Ingrese el Nombre del Jugador 1 ☀ *******************" + Negro);
         System.out.print("→");
         String Nombre = SC.next();
         System.out.println(Azul + "********************************************************************" + Negro);
         Color1 = ColorPieza(0);
         Jugadores.add(new Jugador(Nombre, 0, 1));
-        System.out.println(Azul + "*******************Ingrese el Nombre del Jugador 2*******************" + Negro);
+        System.out.println(Azul + "******************* ☀Ingrese el Nombre del Jugador 2 ☀ *******************" + Negro);
         System.out.print("→");
         Nombre = SC.next();
         System.out.println(Azul + "********************************************************************" + Negro);
@@ -57,12 +57,12 @@ public class Proyecto_Programación_Claudia_11711357 {
         while (true) {
             // System.out.println("Estado del ganador"+Ganador);
             if (Ganador) {
-                System.out.println("Felicidades " + Jugadores.get(JUGADORGANADOR).getNombre() + " ha ganado!");
+                System.out.println(Verde+" ☝!FELICIDADES " + Jugadores.get(JUGADORGANADOR).getNombre() + " HA GANADO! ☝"+Negro);
                 break;
             }
-            System.out.println("Turno de:" + Jugadores.get(Turno).getNombre());
+            System.out.println(Azul+"*******************TURNO DE " + Jugadores.get(Turno).getNombre().toUpperCase()+"*******************"+Negro);
             Imprimir_Matriz(Tablero, 7, 0);
-            System.out.println("\n---------------------------------------------");
+            System.out.println(Azul+"\n---------------------------------------------"+Negro);
             CambiarPosicion(Turno);
             switch (Turno) {
                 case 0:
@@ -74,7 +74,7 @@ public class Proyecto_Programación_Claudia_11711357 {
                     Turno = 0;
                     break;
             }
-            System.out.println("\n→ NUEVAS POSICIONES ←");
+            System.out.println(Azul+"\n→ NUEVAS POSICIONES ←"+Negro);
         }
 
     }
@@ -85,7 +85,7 @@ public class Proyecto_Programación_Claudia_11711357 {
 
         while (Numero == -1) {
             try {
-                System.out.println("→Ingrese el Color con el que desea Jugar: \n"
+                System.out.println(Verde+" ♖ "+Azul+" SELECCIONE UN COLOR PARA SUS PIEZAS: "+Cyan+" ♖ \n"+Negro
                         + Azul + "1)Azul.\n"
                         + Rojo + "2)Rojo.\n" + Negro
                         + Verde + "3)Verde.\n" + Negro
@@ -409,9 +409,7 @@ public class Proyecto_Programación_Claudia_11711357 {
 
         if (Id == 0) {
            // System.out.println("TURNO DEL JUGADOR 1");
-
-           //
-           System.out.println("Las posiciones del rey 2:" + F_Rey2 + "-" + C_Rey2);
+           //System.out.println("Las posiciones del rey 2:" + F_Rey2 + "-" + C_Rey2);
             ((Piezas) Tablero[Fila][Columna]).Movimiento(Fila, Columna, F_Rey2, C_Rey2, 1, Tablero);
         } else {
            // System.out.println("TURNO DEL JUGADOR 2");
