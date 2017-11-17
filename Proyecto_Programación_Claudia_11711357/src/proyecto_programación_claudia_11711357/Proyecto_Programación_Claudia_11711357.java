@@ -187,6 +187,9 @@ public class Proyecto_Programación_Claudia_11711357 {
         //System.out.println("JUGADORES:"+Jugadores);
         //matriz[3][2] = Jugadores.get(0).getPiezas().get(3);
         // matriz[4][3] = Jugadores.get(1).getPiezas().get(3);
+       //matriz[7][0] = "▓";
+      // matriz[6][0] = Jugadores.get(1).getPiezas().get(6);
+
         // System.out.println("Pieza"+Jugadores.get(Jugador).getPiezas().get(3).getClass().getSimpleName());
         return matriz;
     }
@@ -402,7 +405,25 @@ public class Proyecto_Programación_Claudia_11711357 {
 
             //  System.out.println("LA NUEVA POSICION DEL REY  " + F_Rey + "-" + C_Rey);
         }
+        int N=5;
+        if (Tablero[FilaVieja][ColumnaVieja] instanceof Peon ) {
+            //System.out.println("SE MOVIO U PEON");
+            N=((Peon)Tablero[FilaVieja][ColumnaVieja]).Coronar(Id,Fila,Columna,FilaVieja,ColumnaVieja);
+           // System.out.println("OBJETO EN LA POSICION N");
+            if (N >= 0) {
+                int Color = 0;
+                if (Id == 0) {
+                    Color = 1;
+                } else {
+                    Color = 2;
+                }
+                ((Peon) Tablero[FilaVieja][ColumnaVieja]).getCapturados().get(N).setId_Jugador(Id);
+                ((Peon) Tablero[FilaVieja][ColumnaVieja]).getCapturados().get(N).setColor(Color);
+                Tablero[FilaVieja][ColumnaVieja] = ((Peon) Tablero[FilaVieja][ColumnaVieja]).getCapturados().get(N);
+            }
+        }
         Tablero[Fila][Columna] = Tablero[FilaVieja][ColumnaVieja];
+        
         Relleno(FilaVieja, ColumnaVieja);
 
         if (Id == 0) {

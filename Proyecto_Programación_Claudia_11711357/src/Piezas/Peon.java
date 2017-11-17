@@ -5,8 +5,11 @@
  */
 package Piezas;
 
+import java.util.ArrayList;
+import static proyecto_programación_claudia_11711357.Proyecto_Programación_Claudia_11711357.Cyan;
 import static proyecto_programación_claudia_11711357.Proyecto_Programación_Claudia_11711357.Ganador;
 import static proyecto_programación_claudia_11711357.Proyecto_Programación_Claudia_11711357.JUGADORGANADOR;
+import static proyecto_programación_claudia_11711357.Proyecto_Programación_Claudia_11711357.SC;
 //import static proyecto_programación_claudia_11711357.Proyecto_Programación_Claudia_11711357.PeonComer;
 import static proyecto_programación_claudia_11711357.Proyecto_Programación_Claudia_11711357.Tablero;
 
@@ -16,7 +19,7 @@ import static proyecto_programación_claudia_11711357.Proyecto_Programación_Cla
  */
 public class Peon extends Piezas {
 //private String simbolo="P";
-
+private  static ArrayList <Piezas> Capturados= new ArrayList();
     public Peon() {
         super();
         super.simbolo = "♙";
@@ -24,6 +27,7 @@ public class Peon extends Piezas {
     }
 
     @Override
+    
     public boolean Restriccion(int F_Vieja, int C_Vieja, Object Matriz[][], int id) {
         boolean Acceso = false;
         if (id == 0) {
@@ -69,6 +73,14 @@ public class Peon extends Piezas {
             }
         }
         return Acceso;
+    }
+
+    public static ArrayList<Piezas> getCapturados() {
+        return Capturados;
+    }
+
+    public static void setCapturados(ArrayList<Piezas> Capturados) {
+        Peon.Capturados = Capturados;
     }
 
     public boolean Movimiento(int F_Vieja, int C_Vieja, int F_Nueva, int C_Nueva, int Num1, Object[][] Tablero) {
@@ -178,6 +190,17 @@ public class Peon extends Piezas {
                                     JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
                                 } else {
                                     System.out.println("\033[32m ★ PIEZA CAPTURADA ★\033[30m");
+                                       if (Tablero[F_Nueva][C_Nueva] instanceof Caballo) {
+                                            Capturados.add(new Caballo());
+                                    } else if (Tablero[F_Nueva][C_Nueva] instanceof Alfil) {
+                                        Capturados.add(new Alfil());
+                                    } else if (Tablero[F_Nueva][C_Nueva] instanceof Peon) {
+                                        Capturados.add(new Peon());
+                                    } else if (Tablero[F_Nueva][C_Nueva] instanceof Reina) {
+                                        Capturados.add(new Reina());
+                                    } else if (Tablero[F_Nueva][C_Nueva] instanceof Torre) {
+                                        Capturados.add(new Torre());
+                                    }
                                 }
                             }
                             Mover = true;
@@ -197,6 +220,20 @@ public class Peon extends Piezas {
                                     JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
                                 } else {
                                     System.out.println("\033[32m ★ PIEZA CAPTURADA ★\033[30m");
+                                    if (Tablero[F_Nueva][C_Nueva] instanceof Caballo) {
+                                            Capturados.add(new Caballo());
+                                    } else if (Tablero[F_Nueva][C_Nueva] instanceof Alfil) {
+                                        Capturados.add(new Alfil());
+                                    } else if (Tablero[F_Nueva][C_Nueva] instanceof Peon) {
+                                        Capturados.add(new Peon());
+                                    } else if (Tablero[F_Nueva][C_Nueva] instanceof Reina) {
+                                        Capturados.add(new Reina());
+                                    } else if (Tablero[F_Nueva][C_Nueva] instanceof Torre) {
+                                        Capturados.add(new Torre());
+                                    }
+                                   
+                                    //Capturados.get(Capturados.size()-1).setId_Jugador(idActual);
+                                   // System.out.println("CAPTURADOS "+Capturados);
                                 }
                             }
                             Mover = true;
@@ -220,6 +257,17 @@ public class Peon extends Piezas {
                                     JUGADORGANADOR = ((Piezas) Tablero[F_Vieja][C_Vieja]).getId_Jugador();
                                 } else {
                                     System.out.println("\033[32m ★ PIEZA CAPTURADA ★\033[30m");
+                                      if (Tablero[F_Nueva][C_Nueva] instanceof Caballo) {
+                                            Capturados.add(new Caballo());
+                                    } else if (Tablero[F_Nueva][C_Nueva] instanceof Alfil) {
+                                        Capturados.add(new Alfil());
+                                    } else if (Tablero[F_Nueva][C_Nueva] instanceof Peon) {
+                                        Capturados.add(new Peon());
+                                    } else if (Tablero[F_Nueva][C_Nueva] instanceof Reina) {
+                                        Capturados.add(new Reina());
+                                    } else if (Tablero[F_Nueva][C_Nueva] instanceof Torre) {
+                                        Capturados.add(new Torre());
+                                    }
                                 }
                             }
                             Mover = true;
@@ -233,6 +281,43 @@ public class Peon extends Piezas {
         } else {
             Mover = false;
         }
+       
         return Mover;
     }
+    public static int Coronar(int Turno, int F_Nueva, int C_Nueva, int F_Vieja, int C_Vieja) {
+        int N = -6;
+
+        if (F_Nueva == 0 || F_Nueva == 7) {
+            if (Capturados.size() == 0) {
+                System.out.println("El peon ha llegado al otro lado del tablero, pero no ha capturado ninguna pieza, seguira siendo un peon");
+            } else {
+                if (Turno == 0 && F_Nueva == 7) {
+                    System.out.println( Cyan+"♛♛♛♛♛ ¡ CORONACION DEL PEON ! ♛♛♛♛♛♛"+ Cyan);
+                    for (int i = 0; i < Capturados.size(); i++) {
+                        System.out.println(i + ")" + Capturados.get(i).getNombre() + "(" + Capturados.get(i).getSimbolo() + ")");
+                    }
+
+                    while (N < 0 || N >= Capturados.size()) {
+                        System.out.println("→Seleccione la posicion en la que lo convertira.");
+                        N = SC.nextInt();
+                    }
+
+                } else if (Turno == 1 && F_Nueva == 0) {
+
+                     System.out.println( Cyan+"♛♛♛♛♛ ¡ CORONACION DEL PEON ! ♛♛♛♛♛♛"+ Cyan);
+                    for (int i = 0; i < Capturados.size(); i++) {
+                        System.out.println(i + ")" + Capturados.get(i).getNombre() + "(" + Capturados.get(i).getSimbolo() + ")");
+                    }
+
+                    while (N < 0 || N >= Capturados.size()) {
+                         System.out.println("→Seleccione la posicion en la que lo convertira.");
+                        N = SC.nextInt();
+                    }
+                  
+                }
+            }
+        }
+        return N;
+    }
+
 }
