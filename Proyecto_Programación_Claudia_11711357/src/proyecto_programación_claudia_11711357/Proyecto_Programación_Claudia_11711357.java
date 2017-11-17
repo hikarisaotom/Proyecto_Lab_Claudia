@@ -18,14 +18,14 @@ public class Proyecto_Programación_Claudia_11711357 {
     /*POSICIONES GENERALES DE LOS REYES*/
 //    public static int F_Rey = 0;
 //    public static int C_Rey = 0;
-//   public static int F_Rey1 = 0;
-//   public static int C_Rey1 = 3;
-// public static int F_Rey2 = 7;
-//   public static int C_Rey2 = 3;
-    public static int F_Rey1 = 3;
-    public static int C_Rey1 = 2;
-    public static int F_Rey2 = 4;
-    public static int C_Rey2 = 3;
+   public static int F_Rey1 = 0;
+   public static int C_Rey1 = 3;
+ public static int F_Rey2 = 7;
+   public static int C_Rey2 = 3;
+//    public static int F_Rey1 = 3;
+//    public static int C_Rey1 = 2;
+//    public static int F_Rey2 = 4;
+//    public static int C_Rey2 = 3;
     public static String Cyan = "\033[36m";
     public static String Rojo = "\033[31m";
     public static String Azul = "\033[34m";
@@ -57,7 +57,7 @@ public class Proyecto_Programación_Claudia_11711357 {
         while (true) {
             // System.out.println("Estado del ganador"+Ganador);
             if (Ganador) {
-                System.out.println(Verde+" ☝!FELICIDADES " + Jugadores.get(JUGADORGANADOR).getNombre() + " HA GANADO! ☝"+Negro);
+                System.out.println(Verde+" ☝!FELICIDADES " + Jugadores.get(JUGADORGANADOR).getNombre().toUpperCase() + " HA GANADO! ☝"+Negro);
                 break;
             }
             System.out.println(Azul+"*******************TURNO DE " + Jugadores.get(Turno).getNombre().toUpperCase()+"*******************"+Negro);
@@ -69,8 +69,6 @@ public class Proyecto_Programación_Claudia_11711357 {
                     Turno = 1;
                     break;
                 case 1:
-                  Imprimir_Matriz(Tablero, 7, 0);
-                CambiarPosicion(Turno);
                     Turno = 0;
                     break;
             }
